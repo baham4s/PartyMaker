@@ -1,0 +1,22 @@
+<resources>
+    <string name="app_name">Party Maker</string>
+    <string name="settings">Paramètres</string>
+    <string name="consult">Consulter mes évènements</string>
+    <string name="create">Créer un évènement</string>
+    <string name="party_maker_logo">Party Maker logo</string>
+    <string name="cancel">Annuler</string>
+    <string name="name">Nom</string>
+    <string name="mail">Adresse mail</string>
+    <string name="changeColor">Modifier la couleur</string>
+    <string name="fstName">Prénom</string>
+    <string name="validate">Valider</string>
+    <string name="UserEvent">Vos évènements</string>
+    <string name="back">Retour</string>
+    <string name="create_event_one">Création de votre évènements (1/2)</string>
+    <string name="next">Suivant</string>
+    <string name="create_event_two">Création de votre évènements (2/2)</string>
+    <string name="date">Date</string>
+    <string name="place">Lieu</string>
+    <string name="nameEvent">Nom de l\'évènement</string>
+    <string name="resume">Description</string>
+</resources>
