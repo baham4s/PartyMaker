@@ -4,7 +4,6 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/container"
-    tools:context=".ConsultEvent"
     android:layout_width="match_parent"
     android:layout_height="match_parent" >
 
@@ -16,10 +15,11 @@
         android:orientation="horizontal">
 
         <ImageButton
+            android:contentDescription="@string/desc"
             android:layout_marginTop="20dp"
             android:layout_width="25dp"
             android:layout_height="25dp"
-            android:layout_marginLeft="10dp"
+            android:layout_marginStart="10dp"
             android:backgroundTint="#BECFD517"
             android:src="?attr/actionModeCloseDrawable"
             >
@@ -31,12 +31,12 @@
             android:layout_height="wrap_content"
             android:layout_marginTop="15dp"
             android:layout_marginBottom="15dp"
-            android:layout_marginLeft="25dp"
+            android:layout_marginStart="25dp"
             android:text="nom de l'evenement"
             android:textStyle="italic"
             android:textColor="#6A000000"
             android:textSize="25sp"
-            >
+            tools:ignore="HardcodedText">
         </TextView>
 
     </LinearLayout>
@@ -51,9 +51,10 @@
         android:gravity="center">
 
         <ImageButton
-            android:id="@+id/footer_help"
+            android:id="@+id/footer_settings"
             android:layout_width="60dp"
             android:layout_height="60dp"
+            android:contentDescription="@string/desc"
             android:src="@drawable/settings"
 
             />
@@ -62,32 +63,36 @@
             android:id="@+id/footer_calc"
             android:layout_width="60dp"
             android:layout_height="60dp"
-            android:layout_marginLeft="15dp"
-            android:layout_toRightOf="@+id/footer_help"
+            android:layout_marginStart="15dp"
+            android:layout_toEndOf="@+id/footer_settings"
+            android:contentDescription="@string/desc"
             android:src="@drawable/calculator" />
 
         <ImageButton
             android:id="@+id/footer_main"
             android:layout_width="60dp"
             android:layout_height="60dp"
-            android:layout_marginLeft="15dp"
-            android:layout_toRightOf="@+id/footer_calc"
+            android:layout_marginStart="15dp"
+            android:layout_toEndOf="@+id/footer_calc"
+            android:contentDescription="@string/desc"
             android:src="@drawable/home" />
 
         <ImageButton
             android:id="@+id/footer_map"
             android:layout_width="60dp"
             android:layout_height="60dp"
-            android:layout_marginLeft="15dp"
-            android:layout_toRightOf="@+id/footer_main"
+            android:layout_marginStart="15dp"
+            android:layout_toEndOf="@+id/footer_main"
+            android:contentDescription="@string/desc"
             android:src="@drawable/map" />
 
         <ImageButton
             android:id="@+id/footer_people"
             android:layout_width="60dp"
             android:layout_height="60dp"
-            android:layout_marginLeft="15dp"
-            android:layout_toRightOf="@+id/footer_map"
+            android:layout_marginStart="15dp"
+            android:layout_toEndOf="@+id/footer_map"
+            android:contentDescription="@string/desc"
             android:src="@drawable/letter" />
 
     </RelativeLayout>
@@ -106,7 +111,8 @@
             android:layout_centerHorizontal="true"
             android:layout_marginTop="5dp"
             android:text="Ajouter des invités"
-            android:textSize="20dp">
+            android:textSize="20sp"
+            tools:ignore="HardcodedText">
 
         </TextView>
 
@@ -115,12 +121,13 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_below="@+id/textAdd"
-            android:layout_marginLeft="25dp"
+            android:layout_marginStart="25dp"
             android:layout_marginTop="10dp"
             android:text="Participants"
             android:textColor="#000000"
             android:textSize="20sp"
-            android:textStyle="bold" />
+            android:textStyle="bold"
+            tools:ignore="HardcodedText" />
 
         <RelativeLayout
             android:layout_width="match_parent"
@@ -145,18 +152,20 @@
                         android:layout_height="match_parent">
 
                         <ImageView
+                            android:contentDescription="@string/desc"
                             android:id="@+id/user1"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
-                            android:layout_marginLeft="25dp"
+                            android:layout_marginStart="25dp"
                             app:srcCompat="@drawable/user" />
 
                         <TextView
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
-                            android:layout_marginLeft="10dp"
+                            android:layout_marginStart="10dp"
                             android:text="name user1"
-                            android:textSize="22sp" />
+                            android:textSize="22sp"
+                            tools:ignore="HardcodedText" />
 
                     </LinearLayout>
 
@@ -169,18 +178,20 @@
                         android:layout_marginTop="5dp">
 
                         <ImageView
+                            android:contentDescription="@string/desc"
                             android:id="@+id/user2"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
-                            android:layout_marginLeft="25dp"
+                            android:layout_marginStart="25dp"
                             app:srcCompat="@drawable/user" />
 
                         <TextView
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
-                            android:layout_marginLeft="10dp"
+                            android:layout_marginStart="10dp"
                             android:text="name user2"
-                            android:textSize="22sp" />
+                            android:textSize="22sp"
+                            tools:ignore="HardcodedText" />
 
                     </LinearLayout>
 
@@ -192,18 +203,20 @@
                         android:layout_marginTop="5dp">
 
                         <ImageView
+                            android:contentDescription="@string/desc"
                             android:id="@+id/user3"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
-                            android:layout_marginLeft="25dp"
+                            android:layout_marginStart="25dp"
                             app:srcCompat="@drawable/user" />
 
                         <TextView
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
-                            android:layout_marginLeft="10dp"
+                            android:layout_marginStart="10dp"
                             android:text="name user3"
-                            android:textSize="22sp" />
+                            android:textSize="22sp"
+                            tools:ignore="HardcodedText" />
 
                     </LinearLayout>
 
@@ -214,18 +227,20 @@
                         android:layout_marginTop="5dp">
 
                         <ImageView
+                            android:contentDescription="@string/desc"
                             android:id="@+id/user4"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
-                            android:layout_marginLeft="25dp"
+                            android:layout_marginStart="25dp"
                             app:srcCompat="@drawable/user" />
 
                         <TextView
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
-                            android:layout_marginLeft="10dp"
+                            android:layout_marginStart="10dp"
                             android:text="name user4"
-                            android:textSize="22sp" />
+                            android:textSize="22sp"
+                            tools:ignore="HardcodedText" />
 
                     </LinearLayout>
 
@@ -244,35 +259,43 @@
             android:gravity="center">
 
             <EditText
+                android:autofillHints="emailAddress"
+                android:inputType="textEmailAddress"
                 android:id="@+id/zoneMail"
                 android:layout_width="160dp"
                 android:layout_height="wrap_content"
-                android:hint="Saisir le mail" />
+                android:hint="Saisir le mail"
+                tools:ignore="HardcodedText" />
 
             <Button
                 android:id="@+id/addMail"
                 android:layout_width="160dp"
                 android:layout_height="wrap_content"
                 android:layout_below="@id/zoneMail"
-                android:text="Ajout Mail" />
+                android:text="Ajout Mail"
+                tools:ignore="HardcodedText" />
 
             <EditText
+                android:autofillHints="name"
+                android:inputType="text"
                 android:id="@+id/zoneManuel"
                 android:layout_width="160dp"
                 android:layout_height="wrap_content"
 
-                android:layout_marginLeft="15dp"
-                android:layout_toRightOf="@+id/zoneMail"
-                android:hint="Saisir le nom" />
+                android:layout_marginStart="15dp"
+                android:layout_toEndOf="@+id/zoneMail"
+                android:hint="Saisir le nom"
+                tools:ignore="HardcodedText" />
 
             <Button
                 android:id="@+id/addManual"
                 android:layout_width="160dp"
                 android:layout_height="wrap_content"
                 android:layout_below="@+id/zoneManuel"
-                android:layout_marginLeft="15dp"
-                android:layout_toRightOf="@+id/addMail"
-                android:text="Ajout manuel" />
+                android:layout_marginStart="15dp"
+                android:layout_toEndOf="@+id/addMail"
+                android:text="Ajout manuel"
+                tools:ignore="HardcodedText" />
 
 
         </RelativeLayout>

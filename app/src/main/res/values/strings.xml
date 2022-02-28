@@ -19,4 +19,11 @@
     <string name="place">Lieu</string>
     <string name="nameEvent">Nom de l\'évènement</string>
     <string name="resume">Description</string>
+    <string name="undo">Undo</string>
+    <string name="name_of_event">name of event</string>
+    <string name="desc">desc</string>
+    <string name="acceuil">Acceuil</string>
+    <string name="date">Date</string>
+    <string name="la_date_du_calendrier">La date du calendrier</string>
+    <string name="participants">Participants</string>
 </resources>
