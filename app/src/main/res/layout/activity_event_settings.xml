@@ -1,0 +1,169 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/container"
+    tools:context=".ConsultEvent"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent" >
+
+    <LinearLayout
+        android:id="@+id/header"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="#BECFD517"
+        android:orientation="horizontal">
+
+        <ImageButton
+            android:layout_marginTop="20dp"
+            android:layout_width="25dp"
+            android:layout_height="25dp"
+            android:layout_marginLeft="10dp"
+            android:backgroundTint="#BECFD517"
+            android:src="?attr/actionModeCloseDrawable"
+            >
+        </ImageButton>
+
+        <TextView
+            android:id="@+id/textSettings"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="15dp"
+            android:layout_marginBottom="15dp"
+            android:layout_marginLeft="25dp"
+            android:text="nom de l'evenement"
+            android:textStyle="italic"
+            android:textColor="#6A000000"
+            android:textSize="25sp"
+            >
+        </TextView>
+
+    </LinearLayout>
+
+    <!-- Footer aligned to bottom -->
+    <RelativeLayout
+        android:id="@+id/footer"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true"
+        android:background="#252F3330"
+        android:gravity="center">
+
+        <ImageButton
+            android:id="@+id/footer_help"
+            android:layout_width="60dp"
+            android:layout_height="60dp"
+            android:src="@drawable/settings"
+
+            />
+
+        <ImageButton
+            android:id="@+id/footer_calc"
+            android:layout_width="60dp"
+            android:layout_height="60dp"
+            android:layout_marginLeft="15dp"
+            android:layout_toRightOf="@+id/footer_help"
+            android:src="@drawable/calculator" />
+
+        <ImageButton
+            android:id="@+id/footer_main"
+            android:layout_width="60dp"
+            android:layout_height="60dp"
+            android:layout_marginLeft="15dp"
+            android:layout_toRightOf="@+id/footer_calc"
+            android:src="@drawable/home" />
+
+        <ImageButton
+            android:id="@+id/footer_map"
+            android:layout_width="60dp"
+            android:layout_height="60dp"
+            android:layout_marginLeft="15dp"
+            android:layout_toRightOf="@+id/footer_main"
+            android:src="@drawable/map" />
+
+        <ImageButton
+            android:id="@+id/footer_people"
+            android:layout_width="60dp"
+            android:layout_height="60dp"
+            android:layout_marginLeft="15dp"
+            android:layout_toRightOf="@+id/footer_map"
+            android:src="@drawable/letter" />
+
+    </RelativeLayout>
+
+    <!-- Content below header and above footer -->
+    <RelativeLayout
+        android:layout_width="fill_parent"
+        android:layout_height="fill_parent"
+        android:layout_above="@id/footer"
+        android:layout_below="@id/header">
+
+        <TextView
+            android:id="@+id/textSettingsEvent"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerHorizontal="true"
+            android:layout_marginTop="5dp"
+            android:text="Paramètres de l'événement"
+            android:textSize="20dp">
+
+        </TextView>
+
+        <TextView
+            android:id="@+id/textNameEvent"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/textSettingsEvent"
+            android:layout_marginLeft="25dp"
+            android:layout_marginTop="10dp"
+            android:text="Nom de l'évenement"
+            android:textColor="#000000"
+            android:textSize="20sp"
+            android:textStyle="bold" />
+
+        <EditText
+            android:id="@+id/editNameEvent"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/textNameEvent"
+            android:layout_marginLeft="25dp"
+            android:layout_marginRight="25dp"
+            android:hint="nom event" />
+
+        <TextView
+            android:id="@+id/textDateEvent"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/editNameEvent"
+            android:layout_marginLeft="25dp"
+            android:layout_marginTop="10dp"
+            android:text="Date"
+            android:textColor="#000000"
+            android:textSize="20sp"
+            android:textStyle="bold" />
+
+        <CalendarView
+            android:id="@+id/calendarView"
+            android:layout_width="300dp"
+            android:layout_height="300dp"
+            android:layout_below="@id/textDateEvent"
+            android:layout_centerHorizontal="true" />
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="100dp"
+            android:layout_alignParentBottom="true"
+            android:layout_marginBottom="10dp"
+            android:gravity="center">
+
+            <Button
+                android:id="@+id/addMail"
+                android:layout_width="160dp"
+                android:layout_height="wrap_content"
+                android:text="Confirmer" />
+        </RelativeLayout>
+
+    </RelativeLayout>
+
+</RelativeLayout>
