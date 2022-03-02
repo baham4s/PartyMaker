@@ -1,78 +1,117 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<RelativeLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/containerMenu"
     android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    tools:context=".MainActivity">
+    android:layout_height="match_parent" >
 
-<!--    TODO: Changer le logo -->
-<!--    TODO: Vérifier le responsive via les contrainte-->
+    <RelativeLayout
+        android:id="@+id/header"
+        android:layout_width="match_parent"
+        android:layout_height="100dp"
+        android:background="#BECFD517"
+        android:orientation="horizontal">
 
-    <TextView
-        android:id="@+id/title"
-        android:layout_width="190dp"
-        android:layout_height="39dp"
-        android:layout_marginTop="136dp"
-        android:layout_marginEnd="36dp"
-        android:fontFamily="@font/roboto"
-        android:text="@string/app_name"
-        android:textColor="@color/black"
-        android:textSize="30sp"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        <ImageView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerVertical="true"
+            android:layout_marginEnd="28dp"
+            android:layout_toStartOf="@+id/textNomApp"
+            android:src="@drawable/add"
+            app:srcCompat="@drawable/beer_inapp" />
 
-    <ImageView
-        android:id="@+id/logo"
-        android:layout_width="110dp"
-        android:layout_height="103dp"
-        android:layout_marginStart="10dp"
-        android:layout_marginTop="100dp"
-        android:layout_marginEnd="8dp"
-        app:layout_constraintEnd_toStartOf="@+id/title"
-        app:layout_constraintHorizontal_bias="0.471"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:srcCompat="@drawable/logo"
-        android:contentDescription="@string/party_maker_logo" />
+        <TextView
+            android:id="@+id/textNomApp"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerHorizontal="true"
+            android:layout_centerVertical="true"
+            android:text="Party Maker"
+            android:textColor="@color/black"
+            android:textSize="30sp"
+            android:fontFamily="@font/roboto"
 
-    <Button
-        android:id="@+id/button_create"
-        android:layout_width="290dp"
-        android:layout_height="70dp"
-        android:layout_marginTop="116dp"
-        android:fontFamily="@font/roboto"
-        android:text="@string/create"
-        android:onClick="onBtnCreateClick"
-        android:background="@drawable/round_shape_btn"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/logo" />
+            tools:ignore="HardcodedText">
 
-    <Button
-        android:id="@+id/button_consult"
-        android:layout_width="290dp"
-        android:layout_height="70dp"
-        android:layout_marginTop="116dp"
-        android:background="@drawable/round_shape_btn"
-        android:fontFamily="@font/roboto"
-        android:text="@string/consult"
-        android:onClick="onBtnConsultClick"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/button_create" />
+        </TextView>
 
-    <Button
-        android:id="@+id/button_settings"
-        android:layout_width="290dp"
-        android:layout_height="70dp"
-        android:layout_marginTop="116dp"
-        android:fontFamily="@font/roboto"
-        android:onClick="onBtnParameterClick"
-        android:text="@string/settings"
-        android:background="@drawable/round_shape_btn"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/button_consult" />
+    </RelativeLayout>
 
-</androidx.constraintlayout.widget.ConstraintLayout>
+    <!-- Content below header and above footer -->
+    <RelativeLayout
+        android:id="@+id/contentMain"
+        android:layout_width="fill_parent"
+        android:layout_height="fill_parent"
+        android:layout_below="@id/header">
+
+        <Button
+            android:id="@+id/button_create"
+            android:layout_width="290dp"
+            android:layout_height="70dp"
+            android:layout_centerHorizontal="true"
+            android:layout_marginTop="80dp"
+            android:background="@drawable/round_shape_btn"
+            android:fontFamily="@font/roboto"
+            android:onClick="onBtnCreateClick"
+            android:clickable="false"
+            android:text="@string/create" />
+
+        <Button
+            android:id="@+id/button_consult"
+            android:layout_width="290dp"
+            android:layout_height="70dp"
+            android:layout_centerHorizontal="true"
+            android:layout_below="@+id/button_create"
+            android:layout_marginTop="50dp"
+            android:background="@drawable/round_shape_btn"
+            android:fontFamily="@font/roboto"
+            android:onClick="onBtnConsultClick"
+            android:text="@string/consult" />
+
+        <Button
+            android:id="@+id/button_settings"
+            android:layout_width="290dp"
+            android:layout_height="70dp"
+            android:layout_below="@+id/button_consult"
+            android:layout_centerHorizontal="true"
+            android:layout_marginTop="50dp"
+            android:background="@drawable/round_shape_btn"
+            android:fontFamily="@font/roboto"
+            android:onClick="onBtnParameterClick"
+            android:text="@string/settings" />
+
+    </RelativeLayout>
+
+    <!-- Footer aligned to bottom -->
+    <RelativeLayout
+        android:id="@+id/footer"
+        android:layout_width="match_parent"
+        android:layout_height="60dp"
+        android:layout_alignParentBottom="true"
+        android:background="#C9AAAAAA"
+        android:gravity="center">
+
+        <Button
+            android:id="@+id/button_propos"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="A Propos"
+            android:clickable="false"
+            tools:ignore="HardcodedText" />
+
+        <Button
+            android:id="@+id/button_contact"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_toEndOf="@+id/button_propos"
+            android:layout_marginStart="50dp"
+            android:text="Contact"
+            android:clickable="false"
+            tools:ignore="HardcodedText" />
+
+    </RelativeLayout>
+
+</RelativeLayout>

@@ -10,18 +10,18 @@ import android.widget.Button;
 
 public class MainActivity extends AppCompatActivity {
 
-    private Button settings;
-    private Button consult;
-    private Button create;
+    //private Button settings;
+    //private Button consult;
+    //private Button create;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
-        this.settings = findViewById(R.id.button_settings);
-        this.consult = findViewById(R.id.button_consult);
-        this.create = findViewById(R.id.button_create);
+        //this.settings = findViewById(R.id.button_settings);
+        //this.consult = findViewById(R.id.button_consult);
+        //this.create = findViewById(R.id.button_create);
 
     }
 

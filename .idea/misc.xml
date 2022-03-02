@@ -18,6 +18,17 @@
         <entry key="..\:/PartyMaker/app/src/main/res/layout/black_border.xml" value="0.25416666666666665" />
         <entry key="..\:/PartyMaker/app/src/main/res/layout/bottom_navigation_view.xml" value="0.25416666666666665" />
         <entry key="..\:/PartyMaker/app/src/main/res/menu/bottom_navigation_view.xml" value="0.25416666666666665" />
+        <entry key="..\:/Users/Julien/StudioProjects/PartyMaker/app/src/main/res/drawable/mon_icone_background.xml" value="0.1" />
+        <entry key="..\:/Users/Julien/StudioProjects/PartyMaker/app/src/main/res/layout/activity_consult_event.xml" value="0.33" />
+        <entry key="..\:/Users/Julien/StudioProjects/PartyMaker/app/src/main/res/layout/activity_event_ardoise.xml" value="0.33" />
+        <entry key="..\:/Users/Julien/StudioProjects/PartyMaker/app/src/main/res/layout/activity_event_home.xml" value="0.33" />
+        <entry key="..\:/Users/Julien/StudioProjects/PartyMaker/app/src/main/res/layout/activity_event_invite.xml" value="0.33" />
+        <entry key="..\:/Users/Julien/StudioProjects/PartyMaker/app/src/main/res/layout/activity_event_settings.xml" value="0.33" />
+        <entry key="..\:/Users/Julien/StudioProjects/PartyMaker/app/src/main/res/layout/activity_main.xml" value="0.36666666666666664" />
+        <entry key="..\:/Users/Julien/StudioProjects/PartyMaker/app/src/main/res/menu/bottom_navigation_view.xml" value="0.36666666666666664" />
+        <entry key="..\:/Users/Julien/StudioProjects/PartyMaker/app/src/main/res/mipmap-anydpi-v26/ic_launcher.xml" value="0.1845" />
+        <entry key="..\:/Users/Julien/StudioProjects/PartyMaker/app/src/main/res/mipmap-anydpi-v26/ic_launcher_round.xml" value="0.1845" />
+        <entry key="..\:/Users/Julien/StudioProjects/PartyMaker/app/src/main/res/mipmap-anydpi-v26/mon_icone.xml" value="0.213" />
         <entry key="app/src/main/res/drawable/round_shape_btn.xml" value="0.2535" />
         <entry key="app/src/main/res/font-v26/font.xml" value="0.403125" />
         <entry key="app/src/main/res/font/font.xml" value="0.403125" />

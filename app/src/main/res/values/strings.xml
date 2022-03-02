@@ -25,9 +25,4 @@
     <string name="date">Date</string>
     <string name="la_date_du_calendrier">La date du calendrier</string>
     <string name="participants">Participants</string>
-    <string name="bottom_navigation_menu_settings">Paramètres</string>
-    <string name="bottom_navigation_menu_ardoise">Ardoise</string>
-    <string name="bottom_navigation_menu_home">Acceuil</string>
-    <string name="bottom_navigation_menu_map">Lieu</string>
-    <string name="bottom_navigation_menu_invite">Inviter</string>
 </resources>

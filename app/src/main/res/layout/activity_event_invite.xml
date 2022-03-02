@@ -15,7 +15,7 @@
         android:orientation="horizontal">
 
         <ImageButton
-            android:contentDescription="@string/undo"
+            android:contentDescription="@string/desc"
             android:layout_marginTop="20dp"
             android:layout_width="25dp"
             android:layout_height="25dp"
@@ -32,11 +32,11 @@
             android:layout_marginTop="15dp"
             android:layout_marginBottom="15dp"
             android:layout_marginStart="25dp"
-            android:text="@string/name_of_event"
+            android:text="nom de l'evenement"
             android:textStyle="italic"
             android:textColor="#6A000000"
             android:textSize="25sp"
-            >
+            tools:ignore="HardcodedText">
         </TextView>
 
     </LinearLayout>
@@ -45,73 +45,68 @@
     <RelativeLayout
         android:id="@+id/footer"
         android:layout_width="match_parent"
-        android:layout_height="80dp"
+        android:layout_height="85dp"
         android:layout_alignParentBottom="true"
-        android:background="#252F3330"
+        android:background="#C9AAAAAA"
         android:gravity="center">
 
-        <ImageButton
-            android:id="@+id/footer_settings"
-            android:layout_width="50dp"
-            android:layout_height="50dp"
+        <Button
+            android:id="@+id/button_event_home"
+            android:layout_width="90dp"
+            android:layout_height="70dp"
             android:layout_centerVertical="true"
-            android:background="@drawable/black_border"
-            android:contentDescription="@string/desc"
-            android:onClick="goSettings"
-            android:src="@drawable/settings"
-
-
-            />
+            android:backgroundTint="#122F3330"
+            android:drawableTop="@drawable/home"
+            android:onClick="goHome"
+            android:text="Acceuil"
+            android:textColor="@color/black"
+            android:textSize="7sp"
+            tools:ignore="HardcodedText" />
 
         <Button
-            android:id="@+id/footer_calc"
+            android:id="@+id/button_event_ardoise"
             android:layout_width="90dp"
-            android:layout_height="75dp"
+            android:layout_height="70dp"
             android:layout_centerVertical="true"
-            android:layout_marginStart="20dp"
-            android:layout_toEndOf="@+id/footer_settings"
-            android:backgroundTint="#252F3330"
+            android:layout_marginStart="5dp"
+            android:layout_toEndOf="@+id/button_event_home"
+            android:backgroundTint="#122F3330"
             android:drawableTop="@drawable/calculator"
             android:onClick="goCalc"
             android:text="Ardoise"
-            android:textSize="10sp"
-            android:textColor="@color/black"/>
+            android:textColor="@color/black"
+            android:textSize="7sp"
+            tools:ignore="HardcodedText" />
 
-        <ImageButton
-            android:id="@+id/footer_main"
-            android:layout_width="50dp"
-            android:layout_height="50dp"
+        <Button
+            android:id="@+id/button_event_invite"
+            android:layout_width="90dp"
+            android:layout_height="70dp"
             android:layout_centerVertical="true"
-            android:layout_marginStart="20dp"
-            android:layout_toEndOf="@+id/footer_calc"
-            android:background="@drawable/green_border"
-            android:contentDescription="@string/desc"
-            android:onClick="goHome"
-            android:src="@drawable/home" />
-
-        <ImageButton
-            android:id="@+id/footer_map"
-            android:layout_width="50dp"
-            android:layout_height="50dp"
-            android:layout_centerVertical="true"
-            android:layout_marginStart="20dp"
-            android:layout_toEndOf="@+id/footer_main"
-            android:background="@drawable/black_border"
-            android:contentDescription="@string/desc"
-            android:onClick="goMap"
-            android:src="@drawable/map" />
-
-        <ImageButton
-            android:id="@+id/footer_people"
-            android:layout_width="50dp"
-            android:layout_height="50dp"
-            android:layout_centerVertical="true"
-            android:layout_marginStart="20dp"
-            android:layout_toEndOf="@+id/footer_map"
-            android:background="@drawable/black_border"
-            android:contentDescription="@string/desc"
+            android:layout_marginStart="5dp"
+            android:layout_toEndOf="@+id/button_event_ardoise"
+            android:backgroundTint="#BECFD517"
+            android:drawableTop="@drawable/letter"
             android:onClick="goInvite"
-            android:src="@drawable/letter" />
+            android:text="Inviter"
+            android:textColor="@color/black"
+            android:textSize="7sp"
+            tools:ignore="HardcodedText" />
+
+        <Button
+            android:id="@+id/button_event_settings"
+            android:layout_width="90dp"
+            android:layout_height="70dp"
+            android:layout_centerVertical="true"
+            android:layout_marginStart="5dp"
+            android:layout_toEndOf="@+id/button_event_invite"
+            android:backgroundTint="#122F3330"
+            android:drawableTop="@drawable/settings"
+            android:onClick="goSettings"
+            android:text="Paramètre"
+            android:textColor="@color/black"
+            android:textSize="7sp"
+            tools:ignore="HardcodedText" />
 
     </RelativeLayout>
 
@@ -123,61 +118,41 @@
         android:layout_below="@id/header">
 
         <TextView
-            android:id="@+id/textAcceuil"
+            android:id="@+id/textAdd"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_centerHorizontal="true"
             android:layout_marginTop="5dp"
-            android:text="@string/acceuil"
-            android:textSize="20sp">
+            android:text="Ajouter des invités"
+            android:textSize="20sp"
+            tools:ignore="HardcodedText">
 
         </TextView>
+
+        <TextView
+            android:id="@+id/textParticantadd"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/textAdd"
+            android:layout_marginStart="25dp"
+            android:layout_marginTop="10dp"
+            android:text="Participants"
+            android:textColor="#000000"
+            android:textSize="20sp"
+            android:textStyle="bold"
+            tools:ignore="HardcodedText" />
 
         <RelativeLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginTop="40dp">
-
-            <TextView
-                android:id="@+id/textDate"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginStart="25dp"
-                android:text="@string/date"
-                android:textColor="#000000"
-                android:textSize="20sp"
-                android:textStyle="bold" />
-
-            <TextView
-                android:id="@+id/textEventDate"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginStart="10dp"
-                android:layout_toEndOf="@id/textDate"
-                android:text="@string/la_date_du_calendrier"
-                android:textColor="#000000"
-                android:textSize="20sp"
-                android:textStyle="italic" />
-
-            <TextView
-                android:id="@+id/textParticant"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_below="@+id/textDate"
-                android:layout_marginStart="25dp"
-                android:layout_marginTop="10dp"
-                android:text="@string/participants"
-                android:textColor="#000000"
-                android:textSize="20sp"
-                android:textStyle="bold" />
+            android:layout_below="@+id/textParticantadd"
+            android:layout_marginTop="10dp">
 
             <ScrollView
                 android:id="@+id/scrollUSer"
                 android:layout_width="match_parent"
                 android:layout_height="100dp"
-                android:layout_below="@id/textParticant"
                 android:layout_marginLeft="25dp"
-                android:layout_marginTop="10dp"
                 android:layout_marginRight="25dp">
 
                 <RelativeLayout
@@ -286,51 +261,55 @@
 
             </ScrollView>
 
-            <TextView
-                android:id="@+id/textArdoise"
-                android:layout_width="wrap_content"
+
+        </RelativeLayout>
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="100dp"
+            android:layout_alignParentBottom="true"
+            android:layout_marginBottom="10dp"
+            android:gravity="center">
+
+            <EditText
+                android:id="@+id/zoneMail"
+                android:layout_width="160dp"
                 android:layout_height="wrap_content"
-                android:layout_below="@+id/scrollUSer"
-                android:layout_marginStart="25dp"
-                android:layout_marginTop="15dp"
-                android:text="Ardoise "
-                android:textColor="#000000"
-                android:textSize="20sp"
-                android:textStyle="bold"
+                android:autofillHints="emailAddress"
+                android:hint="Saisir le mail"
+                android:inputType="textEmailAddress"
                 tools:ignore="HardcodedText" />
 
-            <TextView
-                android:id="@+id/affichageArdoise"
-                android:layout_width="wrap_content"
+            <Button
+                android:id="@+id/addMail"
+                android:layout_width="160dp"
                 android:layout_height="wrap_content"
-                android:layout_below="@id/textArdoise"
-                android:layout_marginStart="25dp"
-                android:text="Total actuel de l'ardoise : ... euros"
-                android:textSize="15sp"
+                android:layout_below="@id/zoneMail"
+                android:text="Ajout Mail"
                 tools:ignore="HardcodedText" />
 
-            <TextView
-                android:id="@+id/textLieu"
-                android:layout_width="wrap_content"
+            <EditText
+                android:autofillHints="name"
+                android:inputType="text"
+                android:id="@+id/zoneManuel"
+                android:layout_width="160dp"
                 android:layout_height="wrap_content"
-                android:layout_below="@+id/affichageArdoise"
-                android:layout_marginStart="25dp"
-                android:layout_marginTop="10dp"
-                android:text="Lieu "
-                android:textColor="#000000"
-                android:textSize="20sp"
-                android:textStyle="bold"
+
+                android:layout_marginStart="15dp"
+                android:layout_toEndOf="@+id/zoneMail"
+                android:hint="Saisir le nom"
                 tools:ignore="HardcodedText" />
 
-            <TextView
-                android:id="@+id/affichageLieu"
-                android:layout_width="wrap_content"
+            <Button
+                android:id="@+id/addManual"
+                android:layout_width="160dp"
                 android:layout_height="wrap_content"
-                android:layout_below="@id/textLieu"
-                android:layout_marginStart="25dp"
-                android:text="25 Allée Claude Debussy, Le Mans"
-                android:textSize="15sp"
+                android:layout_below="@+id/zoneManuel"
+                android:layout_marginStart="15dp"
+                android:layout_toEndOf="@+id/addMail"
+                android:text="Ajout manuel"
                 tools:ignore="HardcodedText" />
+
 
         </RelativeLayout>
 
