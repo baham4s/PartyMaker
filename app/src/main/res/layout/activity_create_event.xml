@@ -1,140 +1,157 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
+<RelativeLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/container"
     android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    tools:context=".CreateEvent">
+    android:layout_height="match_parent" >
 
-    <TextView
-        android:id="@+id/title"
-        android:layout_width="250dp"
-        android:layout_height="97dp"
-        android:fontFamily="@font/roboto"
-        android:text="@string/create_event_one"
-        android:textColor="@color/black"
-        android:textSize="30sp"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.072" />
-
-    <TextView
-        android:id="@+id/fstName"
-        android:layout_width="wrap_content"
+    <LinearLayout
+        android:id="@+id/header"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginStart="56dp"
-        android:layout_marginTop="116dp"
-        android:fontFamily="@font/roboto"
-        android:text="@string/fstName"
-        android:textColor="@color/black_clear"
-        android:textSize="20sp"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/title"
-        tools:ignore="MissingConstraints" />
+        android:background="#BECFD517"
+        android:orientation="horizontal">
 
-    <EditText
-        android:id="@+id/textFstName"
-        android:layout_width="185dp"
-        android:layout_height="45dp"
-        android:layout_marginStart="48dp"
-        android:layout_marginTop="108dp"
-        android:layout_marginEnd="16dp"
-        android:autofillHints=""
-        android:ems="10"
-        android:inputType="textPersonName"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.139"
-        app:layout_constraintStart_toEndOf="@+id/fstName"
-        app:layout_constraintTop_toBottomOf="@+id/title"
-        tools:ignore="LabelFor,MissingConstraints" />
+        <ImageButton
+            android:layout_width="25dp"
+            android:layout_height="25dp"
+            android:layout_marginStart="10dp"
+            android:layout_marginTop="20dp"
+            android:backgroundTint="#BECFD517"
+            android:contentDescription="@string/desc"
+            android:src="?attr/actionModeCloseDrawable">
 
-    <TextView
-        android:id="@+id/name"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="56dp"
-        android:layout_marginTop="52dp"
-        android:fontFamily="@font/roboto"
-        android:text="@string/name"
-        android:textColor="@color/black_clear"
-        android:textSize="20sp"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/fstName"
-        tools:ignore="MissingConstraints" />
+        </ImageButton>
 
-    <EditText
-        android:id="@+id/textName"
-        android:layout_width="185dp"
-        android:layout_height="45dp"
-        android:layout_marginStart="8dp"
-        android:layout_marginTop="40dp"
-        android:autofillHints=""
-        android:ems="10"
-        android:inputType="textPersonName"
-        app:layout_constraintEnd_toEndOf="@+id/textFstName"
-        app:layout_constraintHorizontal_bias="1.0"
-        app:layout_constraintStart_toEndOf="@+id/name"
-        app:layout_constraintTop_toBottomOf="@+id/textFstName"
-        tools:ignore="LabelFor,MissingConstraints" />
+        <TextView
+            android:id="@+id/textSettings"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="25dp"
+            android:layout_marginTop="15dp"
+            android:layout_marginBottom="15dp"
+            android:text="Création de l'événement (1/2)"
+            android:textColor="#6A000000"
+            android:textSize="25sp"
+            android:textStyle="italic"
+            tools:ignore="HardcodedText">
 
-    <TextView
-        android:id="@+id/mail"
-        android:layout_width="81dp"
-        android:layout_height="56dp"
-        android:layout_marginStart="56dp"
-        android:layout_marginTop="56dp"
-        android:fontFamily="@font/roboto"
-        android:text="@string/mail"
-        android:textColor="@color/black_clear"
-        android:textSize="20sp"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/name"
-        tools:ignore="MissingConstraints" />
+        </TextView>
 
-    <EditText
-        android:id="@+id/textMail"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="8dp"
-        android:layout_marginTop="52dp"
-        android:layout_marginEnd="8dp"
-        android:autofillHints=""
-        android:ems="10"
-        android:inputType="textEmailAddress"
-        app:layout_constraintEnd_toEndOf="@+id/textName"
-        app:layout_constraintHorizontal_bias="1.0"
-        app:layout_constraintStart_toEndOf="@+id/mail"
-        app:layout_constraintTop_toBottomOf="@+id/textName"
-        tools:ignore="LabelFor,MissingConstraints" />
+    </LinearLayout>
 
-    <Button
-        android:id="@+id/btnNext"
-        android:layout_width="200dp"
-        android:layout_height="50dp"
-        android:layout_marginTop="136dp"
-        android:background="@drawable/round_shape_btn"
-        android:fontFamily="@font/roboto"
-        android:onClick="onBtnNextClick"
-        android:text="@string/next"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.502"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/textMail" />
 
-    <Button
-        android:id="@+id/btnCancel"
-        android:layout_width="200dp"
-        android:layout_height="50dp"
-        android:background="@drawable/round_shape_btn"
-        android:fontFamily="@font/roboto"
-        android:onClick="onBtnCancelClick"
-        android:text="@string/cancel"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.502"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/btnNext"
-        app:layout_constraintVertical_bias="0.369" />
-</androidx.constraintlayout.widget.ConstraintLayout>
+
+    <!-- Content below header and above footer -->
+    <RelativeLayout
+        android:layout_width="fill_parent"
+        android:layout_height="fill_parent"
+        android:layout_below="@id/header">
+
+        <TextView
+            android:id="@+id/texteMailCreateEvent"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="25dp"
+            android:layout_marginTop="20dp"
+            android:text="Adresse Mail"
+            android:textColor="#000000"
+            android:textSize="20sp"
+            android:textStyle="bold"
+            tools:ignore="HardcodedText" />
+
+        <EditText
+            android:id="@+id/editMailCreateEvent"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/texteMailCreateEvent"
+            android:layout_marginLeft="25dp"
+            android:layout_marginRight="25dp"
+            android:autofillHints="text"
+            android:hint="adresse mail"
+            android:inputType="text"
+            tools:ignore="HardcodedText" />
+
+        <TextView
+            android:id="@+id/textNameEvent"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/editMailCreateEvent"
+            android:layout_marginStart="25dp"
+            android:layout_marginTop="10dp"
+            android:text="Nom de l'évenement"
+            android:textColor="#000000"
+            android:textSize="20sp"
+            android:textStyle="bold"
+            tools:ignore="HardcodedText" />
+
+        <EditText
+            android:id="@+id/editNameEvent"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/textNameEvent"
+            android:layout_marginLeft="25dp"
+            android:layout_marginRight="25dp"
+            android:autofillHints="text"
+            android:hint="nom event"
+            android:inputType="text"
+            tools:ignore="HardcodedText" />
+
+        <TextView
+            android:id="@+id/textDescEvent"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/editNameEvent"
+            android:layout_marginStart="25dp"
+            android:layout_marginTop="10dp"
+            android:text="Description"
+            android:textColor="#000000"
+            android:textSize="20sp"
+            android:textStyle="bold"
+            tools:ignore="HardcodedText" />
+
+        <EditText
+            android:id="@+id/editDescEvent"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/textDescEvent"
+            android:layout_marginLeft="25dp"
+            android:layout_marginRight="25dp"
+            android:autofillHints="text"
+            android:hint="description"
+            android:inputType="text"
+            tools:ignore="HardcodedText" />
+
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="100dp"
+            android:layout_alignParentBottom="true"
+            android:layout_marginBottom="10dp"
+            android:gravity="center">
+
+            <Button
+                android:id="@+id/button_CancelSettings"
+                android:layout_width="160dp"
+                android:layout_height="wrap_content"
+                android:text="Annuler"
+                android:onClick="returnMain"
+                tools:ignore="HardcodedText" />
+
+            <Button
+                android:id="@+id/button_ConfirmSettings"
+                android:layout_width="160dp"
+                android:layout_height="wrap_content"
+                android:layout_toRightOf="@+id/button_CancelSettings"
+                android:layout_marginStart="20dp"
+                android:text="Suivant"
+                android:onClick="goCreateEvent2"
+                tools:ignore="HardcodedText" />
+
+
+        </RelativeLayout>
+
+    </RelativeLayout>
+
+</RelativeLayout>

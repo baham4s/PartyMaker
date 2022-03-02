@@ -10,7 +10,7 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.PartyMaker">
         <activity
-            android:name=".create_event_2"
+            android:name=".CreateEvent2"
             android:exported="false" />
         <activity
             android:name=".CreateEvent"

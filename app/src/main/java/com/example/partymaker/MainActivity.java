@@ -26,7 +26,7 @@ public class MainActivity extends AppCompatActivity {
     }
 
     public void onBtnCreateClick(View view) {
-        Intent intent = new Intent (this, create_event_2.class);
+        Intent intent = new Intent (this, CreateEvent.class);
         // intent.putExtra();
         startActivity(intent);
     }
