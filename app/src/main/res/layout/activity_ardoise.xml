@@ -44,52 +44,68 @@
     <RelativeLayout
         android:id="@+id/footer"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
+        android:layout_height="70dp"
         android:layout_alignParentBottom="true"
         android:background="#252F3330"
         android:gravity="center">
 
         <ImageButton
             android:id="@+id/footer_settings"
-            android:layout_width="60dp"
-            android:layout_height="60dp"
+            android:layout_width="50dp"
+            android:layout_height="50dp"
+            android:layout_centerVertical="true"
+            android:background="@drawable/black_border"
+            android:onClick="goSettings"
             android:contentDescription="@string/desc"
             android:src="@drawable/settings"
+
 
             />
 
         <ImageButton
             android:id="@+id/footer_calc"
-            android:layout_width="60dp"
-            android:layout_height="60dp"
-            android:layout_marginStart="15dp"
+            android:layout_width="50dp"
+            android:layout_height="50dp"
+            android:layout_centerVertical="true"
+            android:background="@drawable/green_border"
+            android:onClick="goCalc"
+            android:layout_marginStart="20dp"
             android:layout_toEndOf="@+id/footer_settings"
             android:contentDescription="@string/desc"
             android:src="@drawable/calculator" />
 
         <ImageButton
             android:id="@+id/footer_main"
-            android:layout_width="60dp"
-            android:layout_height="60dp"
-            android:layout_marginStart="15dp"
+            android:layout_width="50dp"
+            android:layout_height="50dp"
+            android:layout_centerVertical="true"
+            android:background="@drawable/black_border"
+            android:onClick="goHome"
+            android:layout_marginStart="20dp"
             android:layout_toEndOf="@+id/footer_calc"
             android:contentDescription="@string/desc"
             android:src="@drawable/home" />
 
         <ImageButton
             android:id="@+id/footer_map"
-            android:layout_width="60dp"
-            android:layout_height="60dp"
-            android:layout_marginStart="15dp"
+            android:layout_width="50dp"
+            android:layout_height="50dp"
+            android:layout_centerVertical="true"
+            android:background="@drawable/black_border"
+            android:onClick="goMap"
+            android:layout_marginStart="20dp"
             android:layout_toEndOf="@+id/footer_main"
             android:contentDescription="@string/desc"
             android:src="@drawable/map" />
 
         <ImageButton
             android:id="@+id/footer_people"
-            android:layout_width="60dp"
-            android:layout_height="60dp"
-            android:layout_marginStart="15dp"
+            android:layout_width="50dp"
+            android:layout_height="50dp"
+            android:layout_centerVertical="true"
+            android:background="@drawable/black_border"
+            android:onClick="goInvite"
+            android:layout_marginStart="20dp"
             android:layout_toEndOf="@+id/footer_map"
             android:contentDescription="@string/desc"
             android:src="@drawable/letter" />
@@ -115,21 +131,28 @@
 
         </TextView>
 
-        <ScrollView
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_below="@+id/textTitleArdoise"
+
+        <ListView
+            android:id="@+id/ListViewArdoise"
+            android:layout_width="wrap_content"
+            android:layout_height="300dp"
             android:layout_marginTop="10dp"
-            android:layout_marginRight="25dp"
-            android:layout_marginLeft="25dp">
+            android:layout_marginStart="25dp"
+            android:layout_marginEnd="25dp"
+            android:layout_below="@+id/textTitleArdoise">
 
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="On est là"
-                tools:ignore="HardcodedText" />
+        </ListView>
 
-        </ScrollView>
+        <ImageButton
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/ListViewArdoise"
+            android:layout_centerHorizontal="true"
+            android:layout_marginTop="25dp"
+            android:backgroundTint="#FFFFFF"
+            android:src="@drawable/add" />
+
+
 
     </RelativeLayout>
 

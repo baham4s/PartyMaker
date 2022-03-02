@@ -14,28 +14,29 @@
         android:orientation="horizontal">
 
         <ImageButton
-            android:contentDescription="@string/desc"
-            android:layout_marginTop="20dp"
             android:layout_width="25dp"
             android:layout_height="25dp"
             android:layout_marginStart="10dp"
+            android:layout_marginTop="20dp"
             android:backgroundTint="#BECFD517"
-            android:src="?attr/actionModeCloseDrawable"
-            >
+            android:contentDescription="@string/desc"
+            android:src="?attr/actionModeCloseDrawable">
+
         </ImageButton>
 
         <TextView
             android:id="@+id/textSettings"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:layout_marginStart="25dp"
             android:layout_marginTop="15dp"
             android:layout_marginBottom="15dp"
-            android:layout_marginStart="25dp"
             android:text="nom de l'evenement"
-            android:textStyle="italic"
             android:textColor="#6A000000"
             android:textSize="25sp"
+            android:textStyle="italic"
             tools:ignore="HardcodedText">
+
         </TextView>
 
     </LinearLayout>
@@ -44,52 +45,68 @@
     <RelativeLayout
         android:id="@+id/footer"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
+        android:layout_height="70dp"
         android:layout_alignParentBottom="true"
         android:background="#252F3330"
         android:gravity="center">
 
         <ImageButton
             android:id="@+id/footer_settings"
-            android:layout_width="60dp"
-            android:layout_height="60dp"
+            android:layout_width="50dp"
+            android:layout_height="50dp"
+            android:layout_centerVertical="true"
+            android:background="@drawable/green_border"
+            android:onClick="goSettings"
             android:contentDescription="@string/desc"
             android:src="@drawable/settings"
+
 
             />
 
         <ImageButton
             android:id="@+id/footer_calc"
-            android:layout_width="60dp"
-            android:layout_height="60dp"
-            android:layout_marginStart="15dp"
+            android:layout_width="50dp"
+            android:layout_height="50dp"
+            android:layout_centerVertical="true"
+            android:background="@drawable/black_border"
+            android:onClick="goCalc"
+            android:layout_marginStart="20dp"
             android:layout_toEndOf="@+id/footer_settings"
             android:contentDescription="@string/desc"
             android:src="@drawable/calculator" />
 
         <ImageButton
             android:id="@+id/footer_main"
-            android:layout_width="60dp"
-            android:layout_height="60dp"
-            android:layout_marginStart="15dp"
+            android:layout_width="50dp"
+            android:layout_height="50dp"
+            android:layout_centerVertical="true"
+            android:background="@drawable/black_border"
+            android:onClick="goHome"
+            android:layout_marginStart="20dp"
             android:layout_toEndOf="@+id/footer_calc"
             android:contentDescription="@string/desc"
             android:src="@drawable/home" />
 
         <ImageButton
             android:id="@+id/footer_map"
-            android:layout_width="60dp"
-            android:layout_height="60dp"
-            android:layout_marginStart="15dp"
+            android:layout_width="50dp"
+            android:layout_height="50dp"
+            android:layout_centerVertical="true"
+            android:background="@drawable/black_border"
+            android:onClick="goMap"
+            android:layout_marginStart="20dp"
             android:layout_toEndOf="@+id/footer_main"
             android:contentDescription="@string/desc"
             android:src="@drawable/map" />
 
         <ImageButton
             android:id="@+id/footer_people"
-            android:layout_width="60dp"
-            android:layout_height="60dp"
-            android:layout_marginStart="15dp"
+            android:layout_width="50dp"
+            android:layout_height="50dp"
+            android:layout_centerVertical="true"
+            android:background="@drawable/black_border"
+            android:onClick="goInvite"
+            android:layout_marginStart="20dp"
             android:layout_toEndOf="@+id/footer_map"
             android:contentDescription="@string/desc"
             android:src="@drawable/letter" />
@@ -129,36 +146,53 @@
             tools:ignore="HardcodedText" />
 
         <EditText
-            android:autofillHints="text"
-            android:inputType="text"
             android:id="@+id/editNameEvent"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_below="@+id/textNameEvent"
             android:layout_marginLeft="25dp"
             android:layout_marginRight="25dp"
+            android:autofillHints="text"
             android:hint="nom event"
+            android:inputType="text"
             tools:ignore="HardcodedText" />
 
         <TextView
-            android:id="@+id/textDateEvent"
+            android:id="@+id/textDateSettings"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_below="@+id/editNameEvent"
             android:layout_marginLeft="25dp"
-            android:layout_marginTop="10dp"
+            android:layout_marginTop="20dp"
             android:text="Date"
             android:textColor="#000000"
             android:textSize="20sp"
             android:textStyle="bold"
             tools:ignore="HardcodedText,RtlHardcoded" />
 
-        <CalendarView
-            android:id="@+id/calendarView"
-            android:layout_width="300dp"
-            android:layout_height="300dp"
-            android:layout_below="@id/textDateEvent"
-            android:layout_centerHorizontal="true" />
+        <Button
+            android:id="@+id/datePickerButton"
+            style="@style/Widget.AppCompat.Spinner.DropDown"
+            android:layout_width="200dp"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/textDateSettings"
+            android:layout_centerHorizontal="true"
+            android:onClick="openDatePicker"
+            android:text=""
+            android:textSize="20sp" />
+
+        <TextView
+            android:id="@+id/textHourSettings"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/datePickerButton"
+            android:layout_marginLeft="25dp"
+            android:layout_marginTop="20dp"
+            android:text="Heure"
+            android:textColor="#000000"
+            android:textSize="20sp"
+            android:textStyle="bold"
+            tools:ignore="HardcodedText,RtlHardcoded" />
 
         <RelativeLayout
             android:layout_width="match_parent"
@@ -168,11 +202,13 @@
             android:gravity="center">
 
             <Button
-                android:id="@+id/addMail"
+                android:id="@+id/textConfirmSettings"
                 android:layout_width="160dp"
                 android:layout_height="wrap_content"
                 android:text="Confirmer"
                 tools:ignore="HardcodedText" />
+
+
         </RelativeLayout>
 
     </RelativeLayout>

@@ -15,7 +15,6 @@
     <string name="create_event_one">Création de votre évènements (1/2)</string>
     <string name="next">Suivant</string>
     <string name="create_event_two">Création de votre évènements (2/2)</string>
-    <string name="date">Date</string>
     <string name="place">Lieu</string>
     <string name="nameEvent">Nom de l\'évènement</string>
     <string name="resume">Description</string>
@@ -26,4 +25,9 @@
     <string name="date">Date</string>
     <string name="la_date_du_calendrier">La date du calendrier</string>
     <string name="participants">Participants</string>
+    <string name="bottom_navigation_menu_settings">Paramètres</string>
+    <string name="bottom_navigation_menu_ardoise">Ardoise</string>
+    <string name="bottom_navigation_menu_home">Acceuil</string>
+    <string name="bottom_navigation_menu_map">Lieu</string>
+    <string name="bottom_navigation_menu_invite">Inviter</string>
 </resources>

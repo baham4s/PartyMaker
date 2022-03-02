@@ -22,6 +22,18 @@
             android:name=".settings"
             android:exported="false" />
         <activity
+            android:name=".EventSettings"
+            android:exported="false" />
+        <activity
+            android:name=".EventInvite"
+            android:exported="false" />
+        <activity
+            android:name=".EventHome"
+            android:exported="false" />
+        <activity
+            android:name=".EventCalc"
+            android:exported="false" />
+        <activity
             android:name=".MainActivity"
             android:exported="true">
             <intent-filter>

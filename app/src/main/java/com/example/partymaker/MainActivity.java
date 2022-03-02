@@ -3,6 +3,7 @@ package com.example.partymaker;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Intent;
+import android.media.metrics.Event;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
@@ -25,27 +26,21 @@ public class MainActivity extends AppCompatActivity {
     }
 
     public void onBtnCreateClick(View view) {
-        this.create.setOnClickListener(view1 -> {
-            Intent createActivity = new Intent(getApplicationContext(), CreateEvent.class);
-            startActivity(createActivity);
-            finish();
-        });
+        Intent intent = new Intent (this, create_event_2.class);
+        // intent.putExtra();
+        startActivity(intent);
     }
 
     public void onBtnConsultClick(View view) {
-        this.consult.setOnClickListener(view1 -> {
-            Intent consultActivity = new Intent(getApplicationContext(), ManagementEvent.class);
-            startActivity(consultActivity);
-            finish();
-        });
+        Intent intent = new Intent (this, EventHome.class);
+        // intent.putExtra();
+        startActivity(intent);
     }
 
     public void onBtnParameterClick(View view) {
-        this.settings.setOnClickListener(view1 -> {
-            Intent settingActivity = new Intent(getApplicationContext(), settings.class);
-            startActivity(settingActivity);
-            finish();
-        });
+        Intent intent = new Intent (this, settings.class);
+        // intent.putExtra();
+        startActivity(intent);
     }
 
 

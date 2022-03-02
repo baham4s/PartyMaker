@@ -9,35 +9,23 @@ import android.widget.Button;
 
 public class settings extends AppCompatActivity {
 
-    private Button validate;
-    private Button cancel;
-
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_settings);
+        setContentView(R.layout.activity_user_settings);
 
-        this.validate = findViewById(R.id.btnValidate);
-        this.cancel = findViewById(R.id.btnCancel);
     }
 
-    public void onBtnValidateClick(View view) {
-//        TODO : Récupérer les valeurs indiquer et mettre dans la quelquechose
-//        TODO : Vérifier les champs remplis
-//        TODO : Vérifier la validité des champs rentré
-        this.validate.setOnClickListener(view1 -> {
-            Intent baseActivty = new Intent(getApplicationContext(), MainActivity.class);
-            startActivity(baseActivty);
-            finish();
-        });
+    public void onBtnValidateClick() {
+        Intent intent = new Intent (this, MainActivity.class);
+        // intent.putExtra();
+        startActivity(intent);
     }
 
-    public void onBtnCancelClick(View view) {
-//        TODO : Ne rien faire avec les valeurs indiqué
-        this.cancel.setOnClickListener(view1 -> {
-            Intent cancelActivity = new Intent(getApplicationContext(), MainActivity.class);
-            startActivity(cancelActivity);
-            finish();
-        });
+    public void goBack() {
+        Intent intent = new Intent (this, MainActivity.class);
+        // intent.putExtra();
+        startActivity(intent);
     }
+
 }
