@@ -123,90 +123,54 @@
             android:layout_height="wrap_content"
             android:layout_centerHorizontal="true"
             android:layout_marginTop="5dp"
-            android:text="Paramètres de l'événement"
+            android:text="Ardoise"
             android:textSize="20sp"
             tools:ignore="HardcodedText">
 
         </TextView>
 
-        <TextView
-            android:id="@+id/textNameEvent"
+        <ListView
+            android:id="@+id/ListViewAroidse"
             android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
+            android:layout_height="400dp"
             android:layout_below="@+id/textSettingsEvent"
             android:layout_marginStart="25dp"
             android:layout_marginTop="10dp"
-            android:text="Nom de l'évenement"
-            android:textColor="#000000"
-            android:textSize="20sp"
-            android:textStyle="bold"
-            tools:ignore="HardcodedText" />
+            android:layout_marginEnd="25dp">
 
-        <EditText
-            android:id="@+id/editNameEvent"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_below="@+id/textNameEvent"
-            android:layout_marginLeft="25dp"
-            android:layout_marginRight="25dp"
-            android:autofillHints="text"
-            android:hint="nom event"
-            android:inputType="text"
-            tools:ignore="HardcodedText" />
+        </ListView>
 
         <TextView
-            android:id="@+id/textDateSettings"
+            android:id="@+id/textTotalArdoise"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_below="@+id/editNameEvent"
-            android:layout_marginLeft="25dp"
-            android:layout_marginTop="20dp"
-            android:text="Date"
-            android:textColor="#000000"
+            android:layout_below="@+id/ListViewAroidse"
+            android:layout_marginStart="25dp"
+            android:layout_marginTop="10dp"
             android:textSize="20sp"
-            android:textStyle="bold"
-            tools:ignore="HardcodedText,RtlHardcoded" />
+            android:text="Total = "/>
+
+        <TextView
+            android:id="@+id/totalArdoise"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/ListViewAroidse"
+            android:layout_toRightOf="@+id/textTotalArdoise"
+            android:layout_marginStart="5dp"
+            android:layout_marginTop="10dp"
+            android:textSize="20sp"
+            android:text="0 euros"/>
 
         <Button
-            android:id="@+id/datePickerButton"
-            style="@style/Widget.AppCompat.Spinner.DropDown"
-            android:layout_width="200dp"
-            android:layout_height="wrap_content"
-            android:layout_below="@+id/textDateSettings"
-            android:layout_centerHorizontal="true"
-            android:onClick="openDatePicker"
-            android:text=""
-            android:textSize="20sp" />
-
-        <TextView
-            android:id="@+id/textHourSettings"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_below="@+id/datePickerButton"
-            android:layout_marginLeft="25dp"
-            android:layout_marginTop="20dp"
-            android:text="Heure"
-            android:textColor="#000000"
-            android:textSize="20sp"
-            android:textStyle="bold"
-            tools:ignore="HardcodedText,RtlHardcoded" />
+            android:layout_below="@+id/textTotalArdoise"
+            android:layout_marginTop="25dp"
+            android:layout_centerHorizontal="true"
+            android:text="Ajouter">
 
-        <RelativeLayout
-            android:layout_width="match_parent"
-            android:layout_height="100dp"
-            android:layout_alignParentBottom="true"
-            android:layout_marginBottom="10dp"
-            android:gravity="center">
+        </Button>
 
-            <Button
-                android:id="@+id/textConfirmSettings"
-                android:layout_width="160dp"
-                android:layout_height="wrap_content"
-                android:text="Confirmer"
-                tools:ignore="HardcodedText" />
-
-
-        </RelativeLayout>
 
     </RelativeLayout>
 
