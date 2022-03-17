@@ -58,7 +58,7 @@
             android:backgroundTint="#BECFD517"
             android:drawableTop="@drawable/home"
             android:onClick="goHome"
-            android:text="Acceuil"
+            android:text="Accueil"
             android:textColor="@color/black"
             android:textSize="7sp"
             tools:ignore="HardcodedText" />
@@ -123,7 +123,7 @@
             android:layout_height="wrap_content"
             android:layout_centerHorizontal="true"
             android:layout_marginTop="5dp"
-            android:text="@string/acceuil"
+            android:text="accueil"
             android:textSize="20sp">
 
         </TextView>
@@ -166,149 +166,22 @@
                 android:textSize="20sp"
                 android:textStyle="bold" />
 
-            <ScrollView
-                android:id="@+id/scrollUSer"
-                android:layout_width="match_parent"
-                android:layout_height="100dp"
-                android:layout_below="@id/textParticant"
-                android:layout_marginLeft="25dp"
+            <ListView
+                android:id="@+id/ListViewParticipant"
+                android:layout_width="wrap_content"
+                android:layout_height="150dp"
+                android:layout_below="@+id/textParticant"
+                android:layout_marginStart="25dp"
                 android:layout_marginTop="10dp"
-                android:layout_marginRight="25dp">
+                android:layout_marginEnd="25dp">
 
-                <RelativeLayout
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content">
-
-                    <LinearLayout
-                        android:id="@+id/layoutUser1"
-                        android:layout_width="match_parent"
-                        android:layout_height="match_parent">
-
-                        <ImageView
-                            android:id="@+id/user1"
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:layout_marginStart="25dp"
-                            android:contentDescription="@string/desc"
-                            app:srcCompat="@drawable/user" />
-
-                        <TextView
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:layout_marginStart="10dp"
-                            android:text="name user1"
-                            android:textSize="22sp"
-                            tools:ignore="HardcodedText" />
-
-                    </LinearLayout>
-
-                    <LinearLayout
-                        android:id="@+id/layoutUser2"
-                        android:layout_width="match_parent"
-                        android:layout_height="match_parent"
-                        android:layout_below="@+id/layoutUser1"
-
-                        android:layout_marginTop="5dp">
-
-                        <ImageView
-                            android:id="@+id/user2"
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:layout_marginStart="25dp"
-                            android:contentDescription="@string/desc"
-                            app:srcCompat="@drawable/user" />
-
-                        <TextView
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:layout_marginStart="10dp"
-                            android:text="name user2"
-                            android:textSize="22sp"
-                            tools:ignore="HardcodedText" />
-
-                    </LinearLayout>
-
-                    <LinearLayout
-                        android:id="@+id/layoutUser3"
-                        android:layout_width="match_parent"
-                        android:layout_height="match_parent"
-                        android:layout_below="@+id/layoutUser2"
-                        android:layout_marginTop="5dp">
-
-                        <ImageView
-                            android:id="@+id/user3"
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:layout_marginStart="25dp"
-                            android:contentDescription="@string/desc"
-                            app:srcCompat="@drawable/user" />
-
-                        <TextView
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:layout_marginStart="10dp"
-                            android:text="name user3"
-                            android:textSize="22sp"
-                            tools:ignore="HardcodedText" />
-
-                    </LinearLayout>
-
-                    <LinearLayout
-                        android:layout_width="match_parent"
-                        android:layout_height="match_parent"
-                        android:layout_below="@+id/layoutUser3"
-                        android:layout_marginTop="5dp">
-
-                        <ImageView
-                            android:id="@+id/user4"
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:layout_marginStart="25dp"
-                            android:contentDescription="@string/desc"
-                            app:srcCompat="@drawable/user" />
-
-                        <TextView
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:layout_marginStart="10dp"
-                            android:text="name user4"
-                            android:textSize="22sp"
-                            tools:ignore="HardcodedText" />
-
-                    </LinearLayout>
-
-                </RelativeLayout>
-
-            </ScrollView>
-
-            <TextView
-                android:id="@+id/textArdoise"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_below="@+id/scrollUSer"
-                android:layout_marginStart="25dp"
-                android:layout_marginTop="15dp"
-                android:text="Ardoise "
-                android:textColor="#000000"
-                android:textSize="20sp"
-                android:textStyle="bold"
-                tools:ignore="HardcodedText" />
-
-            <TextView
-                android:id="@+id/affichageArdoise"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_below="@id/textArdoise"
-                android:layout_marginStart="25dp"
-                android:text="Total actuel de l'ardoise : ... euros"
-                android:textSize="15sp"
-                tools:ignore="HardcodedText" />
+            </ListView>
 
             <TextView
                 android:id="@+id/textLieu"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_below="@+id/affichageArdoise"
+                android:layout_below="@+id/ListViewParticipant"
                 android:layout_marginStart="25dp"
                 android:layout_marginTop="10dp"
                 android:text="Lieu "
@@ -326,6 +199,40 @@
                 android:text="25 Allée Claude Debussy, Le Mans"
                 android:textSize="15sp"
                 tools:ignore="HardcodedText" />
+
+            <TextView
+                android:id="@+id/textHeure"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/affichageLieu"
+                android:layout_marginStart="25dp"
+                android:layout_marginTop="10dp"
+                android:text="Heure "
+                android:textColor="#000000"
+                android:textSize="20sp"
+                android:textStyle="bold"
+                tools:ignore="HardcodedText" />
+
+            <TextView
+                android:id="@+id/textHeureEvent"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@id/textHeure"
+                android:layout_marginStart="25dp"
+                android:text="-- : --"
+                android:textSize="15sp"
+                tools:ignore="HardcodedText" />
+
+            <ImageView
+                android:id="@+id/imageEvent"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_below="@+id/textHeureEvent"
+                android:layout_centerHorizontal="true"
+                android:layout_marginTop="10dp"
+                android:layout_marginBottom="10dp"
+                android:src="@drawable/beer"
+                android:text="Importer Icone" />
 
         </RelativeLayout>
 

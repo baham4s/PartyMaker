@@ -58,7 +58,7 @@
             android:backgroundTint="#122F3330"
             android:drawableTop="@drawable/home"
             android:onClick="goHome"
-            android:text="Acceuil"
+            android:text="Accueil"
             android:textColor="@color/black"
             android:textSize="7sp"
             tools:ignore="HardcodedText" />

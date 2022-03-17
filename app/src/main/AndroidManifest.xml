@@ -19,9 +19,6 @@
             android:name=".CreateEvent"
             android:exported="false" />
         <activity
-            android:name=".ManagementEvent"
-            android:exported="false" />
-        <activity
             android:name=".settings"
             android:exported="false" />
         <activity

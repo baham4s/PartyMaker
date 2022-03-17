@@ -50,36 +50,12 @@
         android:layout_below="@id/header">
 
         <TextView
-            android:id="@+id/texteMailCreateEvent"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginStart="25dp"
-            android:layout_marginTop="20dp"
-            android:text="Adresse Mail"
-            android:textColor="#000000"
-            android:textSize="20sp"
-            android:textStyle="bold"
-            tools:ignore="HardcodedText" />
-
-        <EditText
-            android:id="@+id/editMailCreateEvent"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_below="@+id/texteMailCreateEvent"
-            android:layout_marginLeft="25dp"
-            android:layout_marginRight="25dp"
-            android:autofillHints="text"
-            android:inputType="text"
-            tools:ignore="HardcodedText" />
-
-        <TextView
             android:id="@+id/textNameEvent"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_below="@+id/editMailCreateEvent"
             android:layout_marginStart="25dp"
             android:layout_marginTop="10dp"
-            android:text="Nom de l'évenement"
+            android:text="Nom"
             android:textColor="#000000"
             android:textSize="20sp"
             android:textStyle="bold"
@@ -98,10 +74,35 @@
             tools:ignore="HardcodedText" />
 
         <TextView
+            android:id="@+id/textLieuEvent"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="25dp"
+            android:layout_marginTop="10dp"
+            android:layout_below="@+id/editNameEvent"
+            android:text="Adresse"
+            android:textColor="#000000"
+            android:textSize="20sp"
+            android:textStyle="bold"
+            tools:ignore="HardcodedText" />
+
+        <EditText
+            android:id="@+id/editLieuEvent"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/textLieuEvent"
+            android:layout_marginLeft="25dp"
+            android:layout_marginRight="25dp"
+            android:autofillHints="text"
+            android:hint="nom event"
+            android:inputType="text"
+            tools:ignore="HardcodedText" />
+
+        <TextView
             android:id="@+id/textDescEvent"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_below="@+id/editNameEvent"
+            android:layout_below="@+id/editLieuEvent"
             android:layout_marginStart="25dp"
             android:layout_marginTop="10dp"
             android:text="Description"
@@ -120,6 +121,30 @@
             android:autofillHints="text"
             android:hint="description"
             android:inputType="text"
+            tools:ignore="HardcodedText" />
+
+        <TextView
+            android:id="@+id/textImageEvent"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/editDescEvent"
+            android:layout_marginStart="25dp"
+            android:layout_marginTop="10dp"
+            android:text="Image"
+            android:textColor="#000000"
+            android:textSize="20sp"
+            android:textStyle="bold"
+            tools:ignore="HardcodedText" />
+
+        <Button
+            android:id="@+id/button_AjoutImageGalerie"
+            android:layout_width="200dp"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/textImageEvent"
+            android:layout_centerHorizontal="true"
+            android:layout_marginTop="15dp"
+            android:text="Importer Image"
+            android:onClick="importImage"
             tools:ignore="HardcodedText" />
 
 

@@ -1,107 +1,170 @@
 <?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<RelativeLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/container"
     android:layout_width="match_parent"
-    android:layout_height="match_parent">
+    android:layout_height="match_parent" >
 
     <LinearLayout
-        android:id="@+id/header_title"
+        android:id="@+id/header"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:background="#BECFD517"
         android:orientation="horizontal">
 
         <ImageButton
-            android:contentDescription="@string/desc"
-            android:id="@+id/btnCancel"
-            android:onClick="goBack"
-            android:layout_marginTop="20dp"
             android:layout_width="25dp"
             android:layout_height="25dp"
             android:layout_marginStart="10dp"
+            android:layout_marginTop="20dp"
             android:backgroundTint="#BECFD517"
-            android:src="?attr/actionModeCloseDrawable"
-            >
+            android:contentDescription="@string/desc"
+            android:src="?attr/actionModeCloseDrawable">
+
         </ImageButton>
 
         <TextView
             android:id="@+id/textSettings"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:layout_marginStart="25dp"
             android:layout_marginTop="15dp"
             android:layout_marginBottom="15dp"
-            android:layout_marginStart="25dp"
-            android:text="Paramètres"
-            android:textColor="@color/black"
+            android:text="Paramètres Utilisateurs"
+            android:textColor="#6A000000"
             android:textSize="25sp"
+            android:textStyle="italic"
             tools:ignore="HardcodedText">
+
         </TextView>
 
     </LinearLayout>
 
-    <TextView
-        android:id="@+id/textUser"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_below="@+id/header_title"
-        android:layout_marginStart="25dp"
-        android:layout_marginTop="25dp"
-        android:text="Adresse mail"
-        android:textColor="@color/black"
-        tools:ignore="HardcodedText">
 
-    </TextView>
 
-    <EditText
-        android:autofillHints="name"
-        android:inputType="text"
-        android:id="@+id/mail"
-        android:layout_width="365dp"
-        android:layout_height="wrap_content"
-        android:layout_below="@+id/textUser"
-        android:layout_marginLeft="25dp"
-        android:layout_marginRight="25dp"
-        android:hint="Votre adresse mail"
-        tools:ignore="HardcodedText">
-    </EditText>
+    <!-- Content below header and above footer -->
+    <RelativeLayout
+        android:layout_width="fill_parent"
+        android:layout_height="fill_parent"
+        android:layout_below="@id/header">
 
-    <TextView
-        android:id="@+id/textMail"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_below="@+id/mail"
-        android:layout_marginStart="25dp"
-        android:text="Password"
-        android:textColor="@color/black"
-        android:layout_marginTop="25dp"
-        tools:ignore="HardcodedText">
-    </TextView>
+        <TextView
+            android:id="@+id/textSettingsUserMail"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="25dp"
+            android:layout_marginTop="10dp"
+            android:text="Adresse mail"
+            android:textColor="#000000"
+            android:textSize="20sp"
+            android:textStyle="bold"
+            tools:ignore="HardcodedText" />
 
-    <EditText
-        android:autofillHints="emailAddress"
-        android:inputType="textPassword"
-        android:id="@+id/password_setting"
-        android:layout_width="365dp"
-        android:layout_height="wrap_content"
-        android:layout_below="@+id/textMail"
-        android:layout_marginLeft="25dp"
-        android:layout_marginRight="25dp"
-        android:hint="Votre password"
-        tools:ignore="HardcodedText"
-        >
-    </EditText>
+        <EditText
+            android:id="@+id/editTextSettingsUserMail"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/textSettingsUserMail"
+            android:layout_marginLeft="25dp"
+            android:layout_marginRight="25dp"
+            android:autofillHints="text"
+            android:hint="nouvelle adresse mail"
+            android:inputType="text"
+            tools:ignore="HardcodedText" />
 
-    <Button
-        android:id="@+id/btnValidate"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_below="@+id/password_setting"
-        android:onClick="onBtnValidateClick"
-        android:layout_centerHorizontal="true"
-        android:layout_marginTop="25dp"
-        android:text="Valider"
-        tools:ignore="HardcodedText">
+        <TextView
+            android:id="@+id/textLieuEvent"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/editTextSettingsUserMail"
+            android:layout_marginStart="25dp"
+            android:layout_marginTop="25dp"
+            android:text="Mot de passe"
+            android:textColor="#000000"
+            android:textSize="20sp"
+            android:textStyle="bold"
+            tools:ignore="HardcodedText" />
 
-    </Button>
+        <EditText
+            android:id="@+id/editTextSettingsUserCurrentMDP"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/textLieuEvent"
+            android:layout_marginLeft="25dp"
+            android:layout_marginTop="10dp"
+            android:layout_marginRight="25dp"
+            android:autofillHints="text"
+            android:hint="mot de passe actuel"
+            android:inputType="text"
+            tools:ignore="HardcodedText" />
+
+        <EditText
+            android:id="@+id/editTextSettingsUserNewMDP"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/editTextSettingsUserCurrentMDP"
+            android:layout_marginLeft="25dp"
+            android:layout_marginRight="25dp"
+            android:layout_marginTop="10dp"
+            android:autofillHints="text"
+            android:hint="nouveau mot de passe"
+            android:inputType="text"
+            tools:ignore="HardcodedText" />
+
+        <EditText
+            android:id="@+id/editTextSettingsUserNewMDPConfirm"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/editTextSettingsUserNewMDP"
+            android:layout_marginLeft="25dp"
+            android:layout_marginTop="10dp"
+            android:layout_marginRight="25dp"
+            android:autofillHints="text"
+            android:hint="confirmer nouveau mot de passe"
+            android:inputType="text"
+            tools:ignore="HardcodedText" />
+
+        <Switch
+            android:id="@+id/switchTheme"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/editTextSettingsUserNewMDPConfirm"
+            android:layout_marginTop="25dp"
+            android:layout_marginLeft="25dp"
+            android:text="Thème Sombre"
+            android:textColor="#000000"
+            android:textSize="20sp"
+            android:textStyle="bold"/>
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="100dp"
+            android:layout_alignParentBottom="true"
+            android:layout_marginBottom="10dp"
+            android:gravity="center">
+
+            <Button
+                android:id="@+id/button_CancelSettings"
+                android:layout_width="160dp"
+                android:layout_height="wrap_content"
+                android:text="Annuler"
+                android:onClick="returnMain"
+                tools:ignore="HardcodedText" />
+
+            <Button
+                android:id="@+id/button_ConfirmSettings"
+                android:layout_width="160dp"
+                android:layout_height="wrap_content"
+                android:layout_toRightOf="@+id/button_CancelSettings"
+                android:layout_marginStart="20dp"
+                android:text="Suivant"
+                android:onClick="goCreateEvent2"
+                tools:ignore="HardcodedText" />
+
+
+        </RelativeLayout>
+
+    </RelativeLayout>
 
 </RelativeLayout>

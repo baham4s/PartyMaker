@@ -15,29 +15,26 @@
         android:orientation="horizontal">
 
         <ImageButton
-            android:contentDescription="@string/desc"
-            android:layout_marginTop="20dp"
             android:layout_width="25dp"
             android:layout_height="25dp"
             android:layout_marginStart="10dp"
+            android:layout_marginTop="20dp"
             android:backgroundTint="#BECFD517"
-            android:src="?attr/actionModeCloseDrawable"
-            >
-        </ImageButton>
+            android:contentDescription="@string/desc"
+            android:src="?attr/actionModeCloseDrawable"></ImageButton>
 
         <TextView
             android:id="@+id/textSettings"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:layout_marginStart="25dp"
             android:layout_marginTop="15dp"
             android:layout_marginBottom="15dp"
-            android:layout_marginStart="25dp"
             android:text="nom de l'evenement"
-            android:textStyle="italic"
             android:textColor="#6A000000"
             android:textSize="25sp"
-            tools:ignore="HardcodedText">
-        </TextView>
+            android:textStyle="italic"
+            tools:ignore="HardcodedText"></TextView>
 
     </LinearLayout>
 
@@ -58,7 +55,7 @@
             android:backgroundTint="#122F3330"
             android:drawableTop="@drawable/home"
             android:onClick="goHome"
-            android:text="Acceuil"
+            android:text="Accueil"
             android:textColor="@color/black"
             android:textSize="7sp"
             tools:ignore="HardcodedText" />
@@ -142,176 +139,81 @@
             android:textStyle="bold"
             tools:ignore="HardcodedText" />
 
-        <RelativeLayout
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
+        <ListView
+            android:id="@+id/ListViewAroidse"
+            android:layout_width="wrap_content"
+            android:layout_height="250dp"
             android:layout_below="@+id/textParticantadd"
-            android:layout_marginTop="10dp">
-
-            <ScrollView
-                android:id="@+id/scrollUSer"
-                android:layout_width="match_parent"
-                android:layout_height="100dp"
-                android:layout_marginLeft="25dp"
-                android:layout_marginRight="25dp">
-
-                <RelativeLayout
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content">
-
-                    <LinearLayout
-                        android:id="@+id/layoutUser1"
-                        android:layout_width="match_parent"
-                        android:layout_height="match_parent">
-
-                        <ImageView
-                            android:id="@+id/user1"
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:layout_marginStart="25dp"
-                            android:contentDescription="@string/desc"
-                            app:srcCompat="@drawable/user" />
-
-                        <TextView
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:layout_marginStart="10dp"
-                            android:text="name user1"
-                            android:textSize="22sp"
-                            tools:ignore="HardcodedText" />
-
-                    </LinearLayout>
-
-                    <LinearLayout
-                        android:id="@+id/layoutUser2"
-                        android:layout_width="match_parent"
-                        android:layout_height="match_parent"
-                        android:layout_below="@+id/layoutUser1"
-
-                        android:layout_marginTop="5dp">
-
-                        <ImageView
-                            android:id="@+id/user2"
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:layout_marginStart="25dp"
-                            android:contentDescription="@string/desc"
-                            app:srcCompat="@drawable/user" />
-
-                        <TextView
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:layout_marginStart="10dp"
-                            android:text="name user2"
-                            android:textSize="22sp"
-                            tools:ignore="HardcodedText" />
-
-                    </LinearLayout>
-
-                    <LinearLayout
-                        android:id="@+id/layoutUser3"
-                        android:layout_width="match_parent"
-                        android:layout_height="match_parent"
-                        android:layout_below="@+id/layoutUser2"
-                        android:layout_marginTop="5dp">
-
-                        <ImageView
-                            android:id="@+id/user3"
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:layout_marginStart="25dp"
-                            android:contentDescription="@string/desc"
-                            app:srcCompat="@drawable/user" />
-
-                        <TextView
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:layout_marginStart="10dp"
-                            android:text="name user3"
-                            android:textSize="22sp"
-                            tools:ignore="HardcodedText" />
-
-                    </LinearLayout>
-
-                    <LinearLayout
-                        android:layout_width="match_parent"
-                        android:layout_height="match_parent"
-                        android:layout_below="@+id/layoutUser3"
-                        android:layout_marginTop="5dp">
-
-                        <ImageView
-                            android:id="@+id/user4"
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:layout_marginStart="25dp"
-                            android:contentDescription="@string/desc"
-                            app:srcCompat="@drawable/user" />
-
-                        <TextView
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:layout_marginStart="10dp"
-                            android:text="name user4"
-                            android:textSize="22sp"
-                            tools:ignore="HardcodedText" />
-
-                    </LinearLayout>
-
-                </RelativeLayout>
-
-            </ScrollView>
-
-
-        </RelativeLayout>
+            android:layout_marginStart="25dp"
+            android:layout_marginTop="10dp"
+            android:layout_marginEnd="25dp">
+        </ListView>
 
         <RelativeLayout
             android:layout_width="match_parent"
-            android:layout_height="100dp"
+            android:layout_height="200dp"
             android:layout_alignParentBottom="true"
-            android:layout_marginBottom="10dp"
-            android:gravity="center">
+            android:layout_marginBottom="10dp">
+
+            <TextView
+                android:id="@+id/textMail"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="25dp"
+                android:layout_marginTop="10dp"
+                android:text="Mail : "
+                android:textColor="#000000"
+                android:textSize="20sp"
+                android:textStyle="bold"
+                tools:ignore="HardcodedText" />
 
             <EditText
-                android:id="@+id/zoneMail"
-                android:layout_width="160dp"
+                android:id="@+id/editMailInvite"
+                android:layout_width="290dp"
                 android:layout_height="wrap_content"
+                android:layout_marginStart="3dp"
+                android:layout_toRightOf="@+id/textMail"
                 android:autofillHints="emailAddress"
                 android:hint="Saisir le mail"
                 android:inputType="textEmailAddress"
                 tools:ignore="HardcodedText" />
 
-            <Button
-                android:id="@+id/addMail"
-                android:layout_width="160dp"
+            <TextView
+                android:id="@+id/textNom"
+                android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_below="@id/zoneMail"
-                android:text="Ajout Mail"
+                android:layout_below="@+id/editMailInvite"
+                android:layout_marginStart="25dp"
+                android:layout_marginTop="15dp"
+                android:text="Nom : "
+                android:textColor="#000000"
+                android:textSize="20sp"
+                android:textStyle="bold"
                 tools:ignore="HardcodedText" />
 
             <EditText
-                android:autofillHints="name"
-                android:inputType="text"
-                android:id="@+id/zoneManuel"
-                android:layout_width="160dp"
+                android:id="@+id/zoneMail"
+                android:layout_width="290dp"
                 android:layout_height="wrap_content"
-
-                android:layout_marginStart="15dp"
-                android:layout_toEndOf="@+id/zoneMail"
+                android:layout_marginTop="50dp"
+                android:layout_toRightOf="@+id/textNom"
+                android:autofillHints="emailAddress"
                 android:hint="Saisir le nom"
-                tools:ignore="HardcodedText" />
-
-            <Button
-                android:id="@+id/addManual"
-                android:layout_width="160dp"
-                android:layout_height="wrap_content"
-                android:layout_below="@+id/zoneManuel"
-                android:layout_marginStart="15dp"
-                android:layout_toEndOf="@+id/addMail"
-                android:text="Ajout manuel"
+                android:inputType="textEmailAddress"
                 tools:ignore="HardcodedText" />
 
 
         </RelativeLayout>
+
+        <Button
+            android:id="@+id/buttonInvite"
+            android:layout_width="160dp"
+            android:layout_height="wrap_content"
+            android:layout_alignParentBottom="true"
+            android:layout_centerHorizontal="true"
+            android:layout_marginBottom="15dp"
+            android:text="Inviter"
+            tools:ignore="HardcodedText" />
 
     </RelativeLayout>
 
