@@ -25,4 +25,5 @@
     <string name="date">Date</string>
     <string name="la_date_du_calendrier">La date du calendrier</string>
     <string name="participants">Participants</string>
+    <string name="logo">Logo</string>
 </resources>

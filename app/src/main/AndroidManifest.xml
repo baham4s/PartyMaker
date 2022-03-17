@@ -10,6 +10,9 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.PartyMaker">
         <activity
+            android:name=".MainActivity2"
+            android:exported="false" />
+        <activity
             android:name=".CreateEvent2"
             android:exported="false" />
         <activity

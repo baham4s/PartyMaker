@@ -1,0 +1,116 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/containerMenu"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent" >
+
+    <RelativeLayout
+        android:id="@+id/header"
+        android:layout_width="match_parent"
+        android:layout_height="100dp"
+        android:background="#BECFD517"
+        android:orientation="horizontal">
+
+        <ImageView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerVertical="true"
+            android:layout_marginEnd="28dp"
+            android:layout_toStartOf="@+id/textNomApp"
+            android:src="@drawable/add"
+            app:srcCompat="@drawable/beer_inapp"
+            android:contentDescription="@string/logo" />
+
+        <TextView
+            android:id="@+id/textNomApp"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerHorizontal="true"
+            android:layout_centerVertical="true"
+            android:text="Party Maker"
+            android:textColor="@color/black"
+            android:textSize="30sp"
+            android:fontFamily="@font/roboto"
+            tools:ignore="HardcodedText">
+        </TextView>
+
+    </RelativeLayout>
+
+    <!-- Content below header and above footer -->
+    <RelativeLayout
+        android:id="@+id/contentMain"
+        android:layout_width="fill_parent"
+        android:layout_height="fill_parent"
+        android:layout_below="@id/header">
+
+        <Button
+            android:id="@+id/button_create"
+            android:layout_width="290dp"
+            android:layout_height="70dp"
+            android:layout_centerHorizontal="true"
+            android:layout_marginTop="80dp"
+            android:background="@drawable/round_shape_btn"
+            android:fontFamily="@font/roboto"
+            android:onClick="onBtnCreateClick"
+            android:clickable="false"
+            android:text="@string/create" />
+
+        <Button
+            android:id="@+id/button_consult"
+            android:layout_width="290dp"
+            android:layout_height="70dp"
+            android:layout_centerHorizontal="true"
+            android:layout_below="@+id/button_create"
+            android:layout_marginTop="50dp"
+            android:background="@drawable/round_shape_btn"
+            android:fontFamily="@font/roboto"
+            android:onClick="onBtnConsultClick"
+            android:text="@string/consult" />
+
+        <Button
+            android:id="@+id/button_settings"
+            android:layout_width="290dp"
+            android:layout_height="70dp"
+            android:layout_below="@+id/button_consult"
+            android:layout_centerHorizontal="true"
+            android:layout_marginTop="50dp"
+            android:background="@drawable/round_shape_btn"
+            android:fontFamily="@font/roboto"
+            android:onClick="onBtnParameterClick"
+            android:text="@string/settings" />
+
+    </RelativeLayout>
+
+    <!-- Footer aligned to bottom -->
+    <RelativeLayout
+        android:id="@+id/footer"
+        android:layout_width="match_parent"
+        android:layout_height="60dp"
+        android:layout_alignParentBottom="true"
+        android:background="#C9AAAAAA"
+        android:gravity="center">
+
+        <Button
+            android:id="@+id/button_propos"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="A Propos"
+            android:clickable="false"
+            tools:ignore="HardcodedText" />
+
+        <Button
+            android:id="@+id/button_contact"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_toEndOf="@+id/button_propos"
+            android:layout_marginStart="50dp"
+            android:text="Contact"
+            android:clickable="false"
+            tools:ignore="HardcodedText" />
+
+    </RelativeLayout>
+
+</RelativeLayout>

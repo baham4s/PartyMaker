@@ -1,0 +1,39 @@
+{
+  "project_info": {
+    "project_number": "34606218973",
+    "project_id": "partymaker-abc2b",
+    "storage_bucket": "partymaker-abc2b.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:34606218973:android:cd81344f028b2a7f7c6534",
+        "android_client_info": {
+          "package_name": "com.example.partymaker"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "34606218973-ja2f7f88ahbkkt9uuj7el326q2e5nn48.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyAd95qPp-pTP_TulJz3BVBhxIjM4a6nve0"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "34606218973-ja2f7f88ahbkkt9uuj7el326q2e5nn48.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

@@ -1,11 +1,10 @@
 package com.example.partymaker;
 
-import androidx.appcompat.app.AppCompatActivity;
-
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
-import android.widget.Button;
+
+import androidx.appcompat.app.AppCompatActivity;
 
 public class settings extends AppCompatActivity {
 
@@ -13,19 +12,17 @@ public class settings extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_user_settings);
-
     }
 
-    public void onBtnValidateClick() {
-        Intent intent = new Intent (this, MainActivity.class);
+    public void onBtnValidateClick(View view) {
+        Intent intent = new Intent (this, MainActivity2.class);
         // intent.putExtra();
         startActivity(intent);
     }
 
-    public void goBack() {
-        Intent intent = new Intent (this, MainActivity.class);
+    public void goBack(View view) {
+        Intent intent = new Intent (this, MainActivity2.class);
         // intent.putExtra();
         startActivity(intent);
     }
-
 }

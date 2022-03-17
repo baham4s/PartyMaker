@@ -46,7 +46,7 @@
         android:layout_below="@+id/header_title"
         android:layout_marginStart="25dp"
         android:layout_marginTop="25dp"
-        android:text="Nom Utilisateur"
+        android:text="Adresse mail"
         android:textColor="@color/black"
         tools:ignore="HardcodedText">
 
@@ -55,13 +55,13 @@
     <EditText
         android:autofillHints="name"
         android:inputType="text"
-        android:id="@+id/editName"
+        android:id="@+id/mail"
         android:layout_width="365dp"
         android:layout_height="wrap_content"
         android:layout_below="@+id/textUser"
         android:layout_marginLeft="25dp"
         android:layout_marginRight="25dp"
-        android:hint="Votre nom d'utilisateur"
+        android:hint="Votre adresse mail"
         tools:ignore="HardcodedText">
     </EditText>
 
@@ -69,9 +69,9 @@
         android:id="@+id/textMail"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_below="@+id/editName"
+        android:layout_below="@+id/mail"
         android:layout_marginStart="25dp"
-        android:text="Adresse Mail"
+        android:text="Password"
         android:textColor="@color/black"
         android:layout_marginTop="25dp"
         tools:ignore="HardcodedText">
@@ -79,22 +79,23 @@
 
     <EditText
         android:autofillHints="emailAddress"
-        android:inputType="textEmailAddress"
-        android:id="@+id/editMail"
+        android:inputType="textPassword"
+        android:id="@+id/password_setting"
         android:layout_width="365dp"
         android:layout_height="wrap_content"
         android:layout_below="@+id/textMail"
         android:layout_marginLeft="25dp"
         android:layout_marginRight="25dp"
-        android:hint="Votre adresse mail"
+        android:hint="Votre password"
         tools:ignore="HardcodedText"
         >
     </EditText>
 
     <Button
+        android:id="@+id/btnValidate"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_below="@+id/editMail"
+        android:layout_below="@+id/password_setting"
         android:onClick="onBtnValidateClick"
         android:layout_centerHorizontal="true"
         android:layout_marginTop="25dp"

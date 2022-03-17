@@ -69,7 +69,6 @@
             android:layout_marginLeft="25dp"
             android:layout_marginRight="25dp"
             android:autofillHints="text"
-            android:hint="adresse mail"
             android:inputType="text"
             tools:ignore="HardcodedText" />
 
