@@ -61,7 +61,7 @@
             android:layout_marginRight="25dp"
             android:autofillHints="name"
             android:hint="Votre adresse mail"
-            android:inputType="text"
+            android:inputType="textEmailAddress"
             tools:ignore="HardcodedText" />
 
         <TextView

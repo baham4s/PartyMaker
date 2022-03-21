@@ -10,16 +10,16 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.PartyMaker">
         <activity
-            android:name=".MainActivity2"
+            android:name=".Home"
             android:exported="false" />
         <activity
-            android:name=".CreateEvent2"
+            android:name=".CreateEventTime"
             android:exported="false" />
         <activity
-            android:name=".CreateEvent"
+            android:name=".CreateEventInfo"
             android:exported="false" />
         <activity
-            android:name=".settings"
+            android:name=".Settings"
             android:exported="false" />
         <activity
             android:name=".EventSettings"
@@ -34,7 +34,7 @@
             android:name=".EventCalc"
             android:exported="false" />
         <activity
-            android:name=".MainActivity"
+            android:name=".Connection"
             android:exported="true">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />

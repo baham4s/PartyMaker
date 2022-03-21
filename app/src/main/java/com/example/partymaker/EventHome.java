@@ -18,10 +18,12 @@ import java.util.ArrayList;
 
 public class EventHome extends AppCompatActivity {
 
-    private ArrayList<java.util.Map<String, Object>> list = new ArrayList<java.util.Map<String, Object>>();
+    private final ArrayList<java.util.Map<String, Object>> list = new ArrayList<java.util.Map<String, Object>>();
 
     private TextView title;
     private TextView dateEvent;
+    private TextView heure;
+    private TextView adresse;
 
 
     @Override
@@ -36,6 +38,8 @@ public class EventHome extends AppCompatActivity {
         String mailUser = user != null ? user.getEmail() : null;
         this.dateEvent = findViewById(R.id.textEventDate);
         this.title = findViewById(R.id.textSettings);
+        this.heure = findViewById(R.id.textHeureEvent);
+        this.adresse = findViewById(R.id.affichageLieu);
 
         db.collection("event")
                 .whereEqualTo("mail", mailUser)
@@ -49,11 +53,14 @@ public class EventHome extends AppCompatActivity {
                     } else {
                         Log.d("TAG", "Aucun doc trouvé", task.getException());
                     }
+
+                    String tmp = list.get(0).get("heure") + ":" + list.get(0).get("minute");
+
                     this.title.setText((String) (list.get(0)).get("nameEvent"));
                     this.dateEvent.setText((String) (list.get(0)).get("date"));
+                    this.heure.setText(tmp);
+                    this.adresse.setText((String) (list.get(0)).get("adresse"));
                 });
-
-
     }
 
     public void goHome(View view) {

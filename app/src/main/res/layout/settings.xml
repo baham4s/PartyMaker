@@ -31,7 +31,7 @@
             android:layout_marginStart="25dp"
             android:layout_marginTop="15dp"
             android:layout_marginBottom="15dp"
-            android:text="Création de l'événement (1/2)"
+            android:text="Paramètres Utilisateurs"
             android:textColor="#6A000000"
             android:textSize="25sp"
             android:textStyle="italic"
@@ -50,26 +50,26 @@
         android:layout_below="@id/header">
 
         <TextView
-            android:id="@+id/textNameEvent"
+            android:id="@+id/textSettingsUserMail"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginStart="25dp"
             android:layout_marginTop="10dp"
-            android:text="Nom"
+            android:text="Adresse mail"
             android:textColor="#000000"
             android:textSize="20sp"
             android:textStyle="bold"
             tools:ignore="HardcodedText" />
 
         <EditText
-            android:id="@+id/editNameEvent"
+            android:id="@+id/editTextSettingsUserMail"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_below="@+id/textNameEvent"
+            android:layout_below="@+id/textSettingsUserMail"
             android:layout_marginLeft="25dp"
             android:layout_marginRight="25dp"
             android:autofillHints="text"
-            android:hint="nom event"
+            android:hint="nouvelle adresse mail"
             android:inputType="text"
             tools:ignore="HardcodedText" />
 
@@ -77,76 +77,66 @@
             android:id="@+id/textLieuEvent"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:layout_below="@+id/editTextSettingsUserMail"
             android:layout_marginStart="25dp"
-            android:layout_marginTop="10dp"
-            android:layout_below="@+id/editNameEvent"
-            android:text="Adresse"
+            android:layout_marginTop="25dp"
+            android:text="Mot de passe"
             android:textColor="#000000"
             android:textSize="20sp"
             android:textStyle="bold"
             tools:ignore="HardcodedText" />
 
         <EditText
-            android:id="@+id/editLieuEvent"
+            android:id="@+id/editTextSettingsUserCurrentMDP"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_below="@+id/textLieuEvent"
             android:layout_marginLeft="25dp"
+            android:layout_marginTop="10dp"
             android:layout_marginRight="25dp"
             android:autofillHints="text"
-            android:hint="nom event"
-            android:inputType="text"
-            tools:ignore="HardcodedText" />
-
-        <TextView
-            android:id="@+id/textDescEvent"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_below="@+id/editLieuEvent"
-            android:layout_marginStart="25dp"
-            android:layout_marginTop="10dp"
-            android:text="Description"
-            android:textColor="#000000"
-            android:textSize="20sp"
-            android:textStyle="bold"
+            android:hint="mot de passe actuel"
+            android:inputType="textPassword"
             tools:ignore="HardcodedText" />
 
         <EditText
-            android:id="@+id/editDescEvent"
+            android:id="@+id/editTextSettingsUserNewMDP"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_below="@+id/textDescEvent"
+            android:layout_below="@+id/editTextSettingsUserCurrentMDP"
             android:layout_marginLeft="25dp"
+            android:layout_marginTop="10dp"
             android:layout_marginRight="25dp"
             android:autofillHints="text"
-            android:hint="description"
-            android:inputType="text"
+            android:hint="nouveau mot de passe"
+            android:inputType="textPassword"
             tools:ignore="HardcodedText" />
 
-        <TextView
-            android:id="@+id/textImageEvent"
+        <EditText
+            android:id="@+id/editTextSettingsUserNewMDPConfirm"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/editTextSettingsUserNewMDP"
+            android:layout_marginLeft="25dp"
+            android:layout_marginTop="10dp"
+            android:layout_marginRight="25dp"
+            android:autofillHints="text"
+            android:hint="confirmer nouveau mot de passe"
+            android:inputType="textPassword"
+            tools:ignore="HardcodedText" />
+
+        <Switch
+            android:id="@+id/switchTheme"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_below="@+id/editDescEvent"
-            android:layout_marginStart="25dp"
-            android:layout_marginTop="10dp"
-            android:text="Image"
+            android:layout_below="@+id/editTextSettingsUserNewMDPConfirm"
+            android:layout_marginLeft="25dp"
+            android:layout_marginTop="25dp"
+            android:text="Thème Sombre"
             android:textColor="#000000"
             android:textSize="20sp"
             android:textStyle="bold"
-            tools:ignore="HardcodedText" />
-
-        <Button
-            android:id="@+id/button_AjoutImageGalerie"
-            android:layout_width="200dp"
-            android:layout_height="wrap_content"
-            android:layout_below="@+id/textImageEvent"
-            android:layout_centerHorizontal="true"
-            android:layout_marginTop="15dp"
-            android:text="Importer Image"
-            android:onClick="importImage"
-            tools:ignore="HardcodedText" />
-
+            tools:ignore="UseSwitchCompatOrMaterialXml" />
 
         <RelativeLayout
             android:layout_width="match_parent"
@@ -159,18 +149,18 @@
                 android:id="@+id/button_CancelSettings"
                 android:layout_width="160dp"
                 android:layout_height="wrap_content"
-                android:text="Annuler"
                 android:onClick="returnMain"
+                android:text="Annuler"
                 tools:ignore="HardcodedText" />
 
             <Button
                 android:id="@+id/button_ConfirmSettings"
                 android:layout_width="160dp"
                 android:layout_height="wrap_content"
-                android:layout_toRightOf="@+id/button_CancelSettings"
                 android:layout_marginStart="20dp"
-                android:text="Suivant"
+                android:layout_toRightOf="@+id/button_CancelSettings"
                 android:onClick="goCreateEvent2"
+                android:text="Suivant"
                 tools:ignore="HardcodedText" />
 
 

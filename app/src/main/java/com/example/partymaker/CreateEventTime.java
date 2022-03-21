@@ -10,6 +10,7 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.TextView;
 import android.widget.TimePicker;
+import android.widget.Toast;
 
 import androidx.appcompat.app.AppCompatActivity;
 
@@ -19,7 +20,7 @@ import java.text.MessageFormat;
 import java.util.HashMap;
 import java.util.Map;
 
-public class CreateEvent2 extends AppCompatActivity {
+public class CreateEventTime extends AppCompatActivity {
 
     private DatePickerDialog datePickerDialog;
     private Button dateButton;
@@ -31,16 +32,18 @@ public class CreateEvent2 extends AppCompatActivity {
     private String nameEvent;
     private String description;
     private String date;
+    private String adresse;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_create_event2);
+        setContentView(R.layout.create_event_time);
 
         Intent intentBase = getIntent();
         this.mailUser = intentBase.getStringExtra("mail");
         this.nameEvent = intentBase.getStringExtra("nameEvent");
         this.description = intentBase.getStringExtra("description");
+        this.adresse = intentBase.getStringExtra("adresse");
         this.dateButton = findViewById(R.id.datePickerButton);
 
         this.dateButton.setHint(getTodaysDate());
@@ -61,6 +64,30 @@ public class CreateEvent2 extends AppCompatActivity {
         });
 
         this.datePickerDialog.setOnDateSetListener((datePicker, i, i1, i2) -> date = makeDateSring(i2, i1, i));
+    }
+
+    public void confirmEvent(View view) {
+        FirebaseFirestore db = FirebaseFirestore.getInstance();
+        if(date == null){
+            Toast.makeText(this, "Vous devez renseigner une date", Toast.LENGTH_SHORT).show();
+        }
+        else{
+            Map<String, Object> user = new HashMap<>();
+            user.put("mail", this.mailUser);
+            user.put("nameEvent", this.nameEvent);
+            user.put("description", this.description);
+            user.put("adresse", this.adresse);
+            user.put("date", date);
+            user.put("heure", this.timePicker.getHour());
+            user.put("minute", this.timePicker.getMinute());
+
+            db.collection("event")
+                    .add(user)
+                    .addOnSuccessListener(documentReference -> Log.d("TAG", "DocumentSnapshot added with ID: " + documentReference.getId()))
+                    .addOnFailureListener(e -> Log.w("TAG", "Error adding document", e));
+            Intent intent = new Intent(this, Home.class);
+            startActivity(intent);
+        }
     }
 
     private String getTodaysDate() {
@@ -96,7 +123,6 @@ public class CreateEvent2 extends AppCompatActivity {
         }else{
             return  day + " " + getMonthFormat(month) + " " + year;
         }
-
     }
 
     private String getMonthFormat(int month) {
@@ -136,26 +162,8 @@ public class CreateEvent2 extends AppCompatActivity {
     }
 
     public void returnCreate1(View view) {
-        Intent intent = new Intent (this, CreateEvent.class);
+        Intent intent = new Intent (this, CreateEventInfo.class);
         startActivity(intent);
     }
 
-    public void confirmEvent(View view) {
-        FirebaseFirestore db = FirebaseFirestore.getInstance();
-
-        Map<String, Object> user = new HashMap<>();
-        user.put("mail", this.mailUser);
-        user.put("nameEvent", this.nameEvent);
-        user.put("description", this.description);
-        user.put("date", date);
-        user.put("heure", this.timePicker.getHour());
-        user.put("minute", this.timePicker.getMinute());
-
-        db.collection("event")
-                .add(user)
-                .addOnSuccessListener(documentReference -> Log.d("TAG", "DocumentSnapshot added with ID: " + documentReference.getId()))
-                .addOnFailureListener(e -> Log.w("TAG", "Error adding document", e));
-        Intent intent = new Intent (this, MainActivity2.class);
-        startActivity(intent);
-    }
 }

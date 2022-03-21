@@ -20,6 +20,7 @@
             android:layout_marginTop="20dp"
             android:backgroundTint="#BECFD517"
             android:contentDescription="@string/desc"
+            android:onClick="onBtnBackHome"
             android:src="?attr/actionModeCloseDrawable">
 
         </ImageButton>
@@ -202,6 +203,7 @@
                 android:id="@+id/textConfirmSettings"
                 android:layout_width="160dp"
                 android:layout_height="wrap_content"
+                android:onClick="onBtnConfirmClick"
                 android:text="Confirmer"
                 tools:ignore="HardcodedText" />
 
