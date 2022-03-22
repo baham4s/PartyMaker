@@ -1,0 +1,66 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:orientation="vertical"
+    android:layout_width="300dp"
+    android:layout_height="300dp"
+    android:background="#61CFD517">
+
+    <EditText
+        android:id="@+id/editTextMail"
+        android:autofillHints="emailAddress"
+        android:layout_width="200dp"
+        android:layout_height="wrap_content"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="10dp"
+        android:hint="Nom"
+        tools:ignore="HardcodedText"
+        android:inputType="textEmailAddress"
+        android:minHeight="48dp" />
+
+    <EditText
+        android:id="@+id/editTextNom"
+        android:autofillHints="name"
+        android:layout_width="200dp"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/editTextMail"
+        android:layout_centerHorizontal="true"
+        android:fontFamily="sans-serif"
+        android:hint="Mail "
+        tools:ignore="HardcodedText"
+        android:inputType="textPassword"
+        android:minHeight="48dp" />
+
+    <ImageView
+        android:id="@+id/imageIconPreview"
+        android:layout_width="50dp"
+        android:layout_height="50dp"
+        android:layout_below="@+id/editTextNom"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="10dp"
+        android:src="@drawable/user"
+        android:text="Importer Icone"
+        android:contentDescription="Img"
+        tools:ignore="HardcodedText" />
+
+    <Button
+        android:id="@+id/buttonDialogIcon"
+        android:layout_width="160dp"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/imageIconPreview"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="10dp"
+        android:text="Importer Icone"
+        tools:ignore="HardcodedText" />
+
+    <Button
+        android:id="@+id/buttonDialogInvite"
+        android:layout_width="160dp"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/buttonDialogIcon"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="20dp"
+        android:text="Inviter"
+        tools:ignore="HardcodedText" />
+
+</RelativeLayout>
