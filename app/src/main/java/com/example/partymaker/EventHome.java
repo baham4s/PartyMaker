@@ -2,7 +2,6 @@ package com.example.partymaker;
 
 import android.content.Intent;
 import android.os.Bundle;
-import android.os.Handler;
 import android.util.Log;
 import android.view.View;
 import android.widget.TextView;
@@ -14,11 +13,12 @@ import com.google.firebase.auth.FirebaseUser;
 import com.google.firebase.firestore.FirebaseFirestore;
 import com.google.firebase.firestore.QueryDocumentSnapshot;
 
+import java.text.MessageFormat;
 import java.util.ArrayList;
 
 public class EventHome extends AppCompatActivity {
 
-    private final ArrayList<java.util.Map<String, Object>> list = new ArrayList<java.util.Map<String, Object>>();
+    private final ArrayList<java.util.Map<String, Object>> list = new ArrayList<>();
 
     private TextView title;
     private TextView dateEvent;
@@ -54,11 +54,20 @@ public class EventHome extends AppCompatActivity {
                         Log.d("TAG", "Aucun doc trouvé", task.getException());
                     }
 
-                    String tmp = list.get(0).get("heure") + ":" + list.get(0).get("minute");
+
+                    String h = String.valueOf(list.get(0).get("heure"));
+                    String m = String.valueOf(list.get(0).get("minute"));
+
+                    if(Integer.parseInt(m) < 10){
+                        m = "0" + m;
+                    }
+                    if(Integer.parseInt(h) < 10){
+                        h = "0" + h;
+                    }
 
                     this.title.setText((String) (list.get(0)).get("nameEvent"));
                     this.dateEvent.setText((String) (list.get(0)).get("date"));
-                    this.heure.setText(tmp);
+                    this.heure.setText(MessageFormat.format("{0}:{1}", h, m));
                     this.adresse.setText((String) (list.get(0)).get("adresse"));
                 });
     }

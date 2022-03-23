@@ -52,7 +52,6 @@ public class CreateEventTime extends AppCompatActivity {
         this.textViewTime = this.findViewById(R.id.textView_time);
         this.timePicker = this.findViewById(R.id.timePicker);
         // Change this value and run the application again.
-        boolean is24HView = true;
         this.timePicker.setIs24HourView(true);
 
         this.timePicker.setOnTimeChangedListener((view, hourOfDay, minute) -> {
@@ -63,7 +62,10 @@ public class CreateEventTime extends AppCompatActivity {
             }
         });
 
-        this.datePickerDialog.setOnDateSetListener((datePicker, i, i1, i2) -> date = makeDateSring(i2, i1, i));
+        this.datePickerDialog.setOnDateSetListener((datePicker, i, i1, i2) -> {
+            date = makeDateSring(i2, i1, i);
+            getDateButton().setHint(date);
+        });
     }
 
     public void confirmEvent(View view) {
@@ -164,6 +166,10 @@ public class CreateEventTime extends AppCompatActivity {
     public void returnCreate1(View view) {
         Intent intent = new Intent (this, CreateEventInfo.class);
         startActivity(intent);
+    }
+
+    public Button getDateButton(){
+        return dateButton;
     }
 
 }

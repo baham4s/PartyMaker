@@ -119,22 +119,9 @@
         android:layout_below="@id/header">
 
         <TextView
-            android:id="@+id/textSettingsEvent"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_centerHorizontal="true"
-            android:layout_marginTop="5dp"
-            android:text="Paramètres de l'événement"
-            android:textSize="20sp"
-            tools:ignore="HardcodedText">
-
-        </TextView>
-
-        <TextView
             android:id="@+id/textNameEvent"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_below="@+id/textSettingsEvent"
             android:layout_marginStart="25dp"
             android:layout_marginTop="10dp"
             android:text="Nom de l'évenement"
@@ -191,6 +178,18 @@
             android:textSize="20sp"
             android:textStyle="bold"
             tools:ignore="HardcodedText,RtlHardcoded" />
+
+        <TimePicker
+            android:id="@+id/timePicker"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/textHourSettings"
+            android:layout_alignParentEnd="true"
+            android:layout_gravity="center"
+            android:layout_marginTop="0dp"
+            android:layout_marginEnd="63dp"
+            android:numbersSelectorColor="@color/black"
+            android:timePickerMode="spinner" />
 
         <RelativeLayout
             android:layout_width="match_parent"
