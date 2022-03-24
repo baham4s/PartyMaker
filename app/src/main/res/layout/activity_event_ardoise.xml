@@ -14,10 +14,10 @@
         android:orientation="horizontal">
 
         <ImageButton
-            android:layout_width="25dp"
-            android:layout_height="25dp"
+            android:layout_width="48dp"
+            android:layout_height="48dp"
             android:layout_marginStart="10dp"
-            android:layout_marginTop="20dp"
+            android:layout_marginTop="10dp"
             android:backgroundTint="#BECFD517"
             android:contentDescription="@string/desc"
             android:onClick="onBtnHomeClick"
@@ -29,7 +29,7 @@
             android:id="@+id/textSettings"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginStart="25dp"
+            android:layout_marginStart="5dp"
             android:layout_marginTop="15dp"
             android:layout_marginBottom="15dp"
             android:text="nom de l'evenement"
@@ -117,23 +117,10 @@
         android:layout_above="@id/footer"
         android:layout_below="@id/header">
 
-        <TextView
-            android:id="@+id/textSettingsEvent"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_centerHorizontal="true"
-            android:layout_marginTop="5dp"
-            android:text="Ardoise"
-            android:textSize="20sp"
-            tools:ignore="HardcodedText">
-
-        </TextView>
-
         <ListView
             android:id="@+id/ListViewAroidse"
             android:layout_width="wrap_content"
-            android:layout_height="400dp"
-            android:layout_below="@+id/textSettingsEvent"
+            android:layout_height="450dp"
             android:layout_marginStart="25dp"
             android:layout_marginTop="10dp"
             android:layout_marginEnd="25dp">

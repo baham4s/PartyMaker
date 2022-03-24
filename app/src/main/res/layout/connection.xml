@@ -18,9 +18,9 @@
             android:layout_centerVertical="true"
             android:layout_marginEnd="28dp"
             android:layout_toStartOf="@+id/textNomApp"
-            android:src="@drawable/add"
-            app:srcCompat="@drawable/beer_inapp"
-            android:contentDescription="@string/logo" />
+            android:contentDescription="@string/logo"
+            android:src="@drawable/beer_inapp"
+            app:srcCompat="@drawable/beer_inapp" />
 
         <TextView
             android:id="@+id/textNomApp"
@@ -62,6 +62,7 @@
             android:autofillHints="name"
             android:hint="Votre adresse mail"
             android:inputType="textEmailAddress"
+            android:minHeight="48dp"
             tools:ignore="HardcodedText" />
 
         <TextView
@@ -85,6 +86,7 @@
             android:autofillHints="emailAddress"
             android:hint="Votre password"
             android:inputType="textPassword"
+            android:minHeight="48dp"
             tools:ignore="HardcodedText" />
 
         <Button

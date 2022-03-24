@@ -14,10 +14,10 @@
         android:orientation="horizontal">
 
         <ImageButton
-            android:layout_width="25dp"
-            android:layout_height="25dp"
+            android:layout_width="48dp"
+            android:layout_height="48dp"
             android:layout_marginStart="10dp"
-            android:layout_marginTop="20dp"
+            android:layout_marginTop="10dp"
             android:backgroundTint="#BECFD517"
             android:contentDescription="@string/desc"
             android:onClick="returnMain"
@@ -29,7 +29,7 @@
             android:id="@+id/textSettings"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginStart="25dp"
+            android:layout_marginStart="5dp"
             android:layout_marginTop="15dp"
             android:layout_marginBottom="15dp"
             android:text="Paramètres Utilisateurs"
@@ -72,6 +72,7 @@
             android:autofillHints="text"
             android:hint="nouvelle adresse mail"
             android:inputType="text"
+            android:minHeight="48dp"
             tools:ignore="HardcodedText" />
 
         <TextView
@@ -98,6 +99,7 @@
             android:autofillHints="text"
             android:hint="mot de passe actuel"
             android:inputType="textPassword"
+            android:minHeight="48dp"
             tools:ignore="HardcodedText" />
 
         <EditText
@@ -111,6 +113,7 @@
             android:autofillHints="text"
             android:hint="nouveau mot de passe"
             android:inputType="textPassword"
+            android:minHeight="48dp"
             tools:ignore="HardcodedText" />
 
         <EditText
@@ -124,6 +127,7 @@
             android:autofillHints="text"
             android:hint="confirmer nouveau mot de passe"
             android:inputType="textPassword"
+            android:minHeight="48dp"
             tools:ignore="HardcodedText" />
 
         <Switch
@@ -133,6 +137,7 @@
             android:layout_below="@+id/editTextSettingsUserNewMDPConfirm"
             android:layout_marginLeft="25dp"
             android:layout_marginTop="25dp"
+            android:minHeight="48dp"
             android:text="Thème Sombre"
             android:textColor="#000000"
             android:textSize="20sp"
@@ -161,7 +166,7 @@
                 android:layout_marginStart="20dp"
                 android:layout_toRightOf="@+id/button_CancelSettings"
                 android:onClick="goCreateEvent2"
-                android:text="Suivant"
+                android:text="Confirmer"
                 tools:ignore="HardcodedText" />
 
 

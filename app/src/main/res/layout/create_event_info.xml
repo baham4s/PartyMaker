@@ -14,10 +14,10 @@
         android:orientation="horizontal">
 
         <ImageButton
-            android:layout_width="25dp"
-            android:layout_height="25dp"
+            android:layout_width="48dp"
+            android:layout_height="48dp"
             android:layout_marginStart="10dp"
-            android:layout_marginTop="20dp"
+            android:layout_marginTop="10dp"
             android:backgroundTint="#BECFD517"
             android:contentDescription="@string/desc"
             android:onClick="returnMain"
@@ -29,7 +29,7 @@
             android:id="@+id/textSettings"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginStart="25dp"
+            android:layout_marginStart="5dp"
             android:layout_marginTop="15dp"
             android:layout_marginBottom="15dp"
             android:text="Création de l'événement (1/2)"
@@ -72,6 +72,7 @@
             android:autofillHints="text"
             android:hint="nom event"
             android:inputType="text"
+            android:minHeight="48dp"
             tools:ignore="HardcodedText" />
 
         <TextView
@@ -97,6 +98,7 @@
             android:autofillHints="text"
             android:hint="nom event"
             android:inputType="text"
+            android:minHeight="48dp"
             tools:ignore="HardcodedText" />
 
         <TextView
@@ -122,6 +124,7 @@
             android:autofillHints="text"
             android:hint="description"
             android:inputType="text"
+            android:minHeight="48dp"
             tools:ignore="HardcodedText" />
 
         <TextView

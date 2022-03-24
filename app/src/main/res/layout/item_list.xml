@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout
+<RelativeLayout
     xmlns:android="http://schemas.android.com/apk/res/android"
     android:orientation="vertical"
     android:layout_width="match_parent"
@@ -8,20 +8,30 @@
 
     <TextView
         android:id="@+id/nameEventTitle"
-        android:layout_width="match_parent"
+        android:layout_width="300dp"
         android:layout_height="wrap_content"
         android:fontFamily="sans-serif-medium"
+        android:hint="nameEvent"
         android:textAppearance="?android:textAppearanceMedium"
-        android:textColor="@color/black"
-        android:hint="nameEvent"/>
+        android:textColor="@color/black" />
 
     <TextView
         android:id="@+id/dateEventTitle"
-        android:layout_width="match_parent"
+        android:layout_width="300dp"
         android:layout_height="wrap_content"
         android:fontFamily="sans-serif"
+        android:layout_marginTop="7dp"
+        android:layout_below="@+id/nameEventTitle"
         android:textAppearance="?android:textAppearance"
         android:textColor="@color/black"
         android:hint="date"/>
 
-</LinearLayout>
+    <ImageButton
+        android:layout_width="50dp"
+        android:layout_height="50dp"
+        android:layout_toRightOf="@+id/nameEventTitle"
+        android:src="@android:drawable/ic_delete"
+        android:contentDescription="yes"
+        android:background="@color/white"/>
+
+</RelativeLayout>

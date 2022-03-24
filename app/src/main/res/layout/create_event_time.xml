@@ -13,10 +13,10 @@
         android:orientation="horizontal">
 
         <ImageButton
-            android:layout_width="25dp"
-            android:layout_height="25dp"
+            android:layout_width="48dp"
+            android:layout_height="48dp"
             android:layout_marginStart="10dp"
-            android:layout_marginTop="20dp"
+            android:layout_marginTop="10dp"
             android:backgroundTint="#BECFD517"
             android:contentDescription="@string/desc"
             android:onClick="onBtnHomeClick"
@@ -28,7 +28,7 @@
             android:id="@+id/textSettings"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginStart="25dp"
+            android:layout_marginStart="5dp"
             android:layout_marginTop="15dp"
             android:layout_marginBottom="15dp"
             android:text="Création de l'événement (2/2)"
@@ -66,6 +66,7 @@
             android:layout_height="wrap_content"
             android:layout_below="@+id/textDateSettings"
             android:layout_centerHorizontal="true"
+            android:contentDescription="time print"
             android:hint=""
             android:onClick="openDatePicker"
             android:textColorHint="@color/black"
@@ -91,6 +92,7 @@
             android:layout_height="wrap_content"
             android:layout_below="@+id/textHourSettings"
             android:layout_gravity="center"
+            android:contentDescription="time"
             android:numbersSelectorColor="@color/black"
             android:timePickerMode="clock" />
 

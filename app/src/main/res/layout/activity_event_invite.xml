@@ -15,10 +15,10 @@
         android:orientation="horizontal">
 
         <ImageButton
-            android:layout_width="25dp"
-            android:layout_height="25dp"
+            android:layout_width="48dp"
+            android:layout_height="48dp"
             android:layout_marginStart="10dp"
-            android:layout_marginTop="20dp"
+            android:layout_marginTop="10dp"
             android:backgroundTint="#BECFD517"
             android:contentDescription="@string/desc"
             android:onClick="onBtnHomeClick"
@@ -28,7 +28,7 @@
             android:id="@+id/textSettings"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginStart="25dp"
+            android:layout_marginStart="5dp"
             android:layout_marginTop="15dp"
             android:layout_marginBottom="15dp"
             android:text="nom de l'evenement"
@@ -115,22 +115,9 @@
         android:layout_below="@id/header">
 
         <TextView
-            android:id="@+id/textAdd"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_centerHorizontal="true"
-            android:layout_marginTop="5dp"
-            android:text="Ajouter des invités"
-            android:textSize="20sp"
-            tools:ignore="HardcodedText">
-
-        </TextView>
-
-        <TextView
             android:id="@+id/textParticantadd"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_below="@+id/textAdd"
             android:layout_marginStart="25dp"
             android:layout_marginTop="10dp"
             android:text="Participants"
@@ -142,68 +129,13 @@
         <ListView
             android:id="@+id/ListViewAroidse"
             android:layout_width="wrap_content"
-            android:layout_height="250dp"
+            android:layout_height="450dp"
             android:layout_below="@+id/textParticantadd"
             android:layout_marginStart="25dp"
             android:layout_marginTop="10dp"
             android:layout_marginEnd="25dp">
+
         </ListView>
-
-        <RelativeLayout
-            android:layout_width="match_parent"
-            android:layout_height="200dp"
-            android:layout_alignParentBottom="true"
-            android:layout_marginBottom="10dp">
-
-            <TextView
-                android:id="@+id/textMail"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginStart="25dp"
-                android:layout_marginTop="10dp"
-                android:text="Mail : "
-                android:textColor="#000000"
-                android:textSize="20sp"
-                android:textStyle="bold"
-                tools:ignore="HardcodedText" />
-
-            <EditText
-                android:id="@+id/editMailInvite"
-                android:layout_width="290dp"
-                android:layout_height="wrap_content"
-                android:layout_marginStart="3dp"
-                android:layout_toRightOf="@+id/textMail"
-                android:autofillHints="emailAddress"
-                android:hint="Saisir le mail"
-                android:inputType="textEmailAddress"
-                tools:ignore="HardcodedText" />
-
-            <TextView
-                android:id="@+id/textNom"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_below="@+id/editMailInvite"
-                android:layout_marginStart="25dp"
-                android:layout_marginTop="15dp"
-                android:text="Nom : "
-                android:textColor="#000000"
-                android:textSize="20sp"
-                android:textStyle="bold"
-                tools:ignore="HardcodedText" />
-
-            <EditText
-                android:id="@+id/zoneMail"
-                android:layout_width="290dp"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="50dp"
-                android:layout_toRightOf="@+id/textNom"
-                android:autofillHints="emailAddress"
-                android:hint="Saisir le nom"
-                android:inputType="textEmailAddress"
-                tools:ignore="HardcodedText" />
-
-
-        </RelativeLayout>
 
         <Button
             android:id="@+id/buttonInvite"
@@ -212,7 +144,7 @@
             android:layout_alignParentBottom="true"
             android:layout_centerHorizontal="true"
             android:layout_marginBottom="15dp"
-            android:text="Inviter"
+            android:text="Ajouter"
             tools:ignore="HardcodedText" />
 
     </RelativeLayout>
