@@ -1,0 +1,115 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/container"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".EventList">
+
+    <LinearLayout
+        android:id="@+id/header"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="#BECFD517"
+        android:orientation="horizontal">
+
+        <ImageButton
+            android:layout_width="48dp"
+            android:layout_height="48dp"
+            android:layout_marginStart="10dp"
+            android:layout_marginTop="10dp"
+            android:backgroundTint="#BECFD517"
+            android:contentDescription="@string/desc"
+            android:onClick="onBtnHomeClick"
+            android:src="?attr/actionModeCloseDrawable">
+
+        </ImageButton>
+
+        <TextView
+            android:id="@+id/textContact"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="5dp"
+            android:layout_marginTop="15dp"
+            android:layout_marginBottom="15dp"
+            android:text="Contact"
+            android:textColor="#6A000000"
+            android:textSize="25sp"
+            android:textStyle="italic"
+            tools:ignore="HardcodedText">
+
+        </TextView>
+
+    </LinearLayout>
+
+    <!-- Content below header and above footer -->
+    <RelativeLayout
+        android:layout_width="fill_parent"
+        android:layout_height="fill_parent"
+        android:layout_below="@id/header">
+
+        <TextView
+            android:id="@+id/textObjContact"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="25dp"
+            android:layout_marginTop="10dp"
+            android:text="Objet de votre retour"
+            android:textColor="#000000"
+            android:textSize="20sp"
+            android:textStyle="bold"
+            tools:ignore="HardcodedText" />
+
+        <EditText
+            android:id="@+id/editObjContact"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/textObjContact"
+            android:layout_marginLeft="25dp"
+            android:layout_marginRight="25dp"
+            android:autofillHints="text"
+            android:hint="Entrez votre texte ici"
+            android:inputType="text"
+            android:minHeight="48dp"
+            tools:ignore="HardcodedText" />
+
+        <TextView
+            android:id="@+id/textMessageContact"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="25dp"
+            android:layout_marginTop="10dp"
+            android:layout_below="@+id/editObjContact"
+            android:text="Votre message"
+            android:textColor="#000000"
+            android:textSize="20sp"
+            android:textStyle="bold"
+            tools:ignore="HardcodedText" />
+
+        <EditText
+            android:id="@+id/editMessaegCOntact"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/textMessageContact"
+            android:layout_marginLeft="25dp"
+            android:layout_marginRight="25dp"
+            android:autofillHints="text"
+            android:hint="Entrez votre texte ici"
+            android:inputType="text"
+            android:minHeight="48dp"
+            tools:ignore="HardcodedText" />
+
+        <Button
+            android:id="@+id/textConfirmSettings"
+            android:layout_width="160dp"
+            android:layout_marginTop="15dp"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/editMessaegCOntact"
+            android:layout_centerHorizontal="true"
+            android:text="Envoyer"
+            tools:ignore="HardcodedText,TouchTargetSizeCheck" />
+
+    </RelativeLayout>
+
+</RelativeLayout>
