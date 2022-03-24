@@ -19,7 +19,7 @@ public class Home extends AppCompatActivity {
     }
 
     public void onBtnConsultClick(View view) {
-        Intent intent = new Intent (this, EventHome.class);
+        Intent intent = new Intent (this, EventList.class);
         startActivity(intent);
     }
 

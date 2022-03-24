@@ -2,61 +2,52 @@ package com.example.partymaker;
 
 import android.content.Intent;
 import android.os.Bundle;
-import android.util.Log;
 import android.view.View;
 import android.widget.TextView;
 
 import androidx.appcompat.app.AppCompatActivity;
 
-import com.google.firebase.auth.FirebaseAuth;
-import com.google.firebase.auth.FirebaseUser;
+import com.google.firebase.firestore.DocumentReference;
+import com.google.firebase.firestore.DocumentSnapshot;
 import com.google.firebase.firestore.FirebaseFirestore;
-import com.google.firebase.firestore.QueryDocumentSnapshot;
 
 import java.text.MessageFormat;
-import java.util.ArrayList;
+import java.util.Map;
 
 public class EventHome extends AppCompatActivity {
-
-    private final ArrayList<java.util.Map<String, Object>> list = new ArrayList<>();
 
     private TextView title;
     private TextView dateEvent;
     private TextView heure;
     private TextView adresse;
+    private String id;
 
+    private Map tmp;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_event_home);
 
-        FirebaseFirestore db = FirebaseFirestore.getInstance();
-        FirebaseAuth mAuth = FirebaseAuth.getInstance();
-        FirebaseUser user = mAuth.getCurrentUser();
+        Intent intentBase = getIntent();
+        this.id = intentBase.getStringExtra("id");
 
-        String mailUser = user != null ? user.getEmail() : null;
+        FirebaseFirestore db = FirebaseFirestore.getInstance();
+
         this.dateEvent = findViewById(R.id.textEventDate);
         this.title = findViewById(R.id.textSettings);
         this.heure = findViewById(R.id.textHeureEvent);
         this.adresse = findViewById(R.id.affichageLieu);
 
-        db.collection("event")
-                .whereEqualTo("mail", mailUser)
-                .get()
-                .addOnCompleteListener(task -> {
-                    if (task.isSuccessful()) {
-                        for (QueryDocumentSnapshot document : task.getResult()) {
-                            Log.d("TAG", document.getId() + " => " + document.getData());
-                            list.add(document.getData());
-                        }
-                    } else {
-                        Log.d("TAG", "Aucun doc trouvé", task.getException());
-                    }
+        DocumentReference docRef = db.collection("event").document(this.id);
+        docRef.get().addOnCompleteListener(task -> {
+            if (task.isSuccessful()) {
+                DocumentSnapshot document = task.getResult();
+                if (document.exists()) {
+                    setTmp(document.getData());
 
-
-                    String h = String.valueOf(list.get(0).get("heure"));
-                    String m = String.valueOf(list.get(0).get("minute"));
+                    String h = String.valueOf(tmp.get("heure"));
+                    String m = String.valueOf(tmp.get("minute"));
 
                     if(Integer.parseInt(m) < 10){
                         m = "0" + m;
@@ -65,11 +56,13 @@ public class EventHome extends AppCompatActivity {
                         h = "0" + h;
                     }
 
-                    this.title.setText((String) (list.get(0)).get("nameEvent"));
-                    this.dateEvent.setText((String) (list.get(0)).get("date"));
-                    this.heure.setText(MessageFormat.format("{0}:{1}", h, m));
-                    this.adresse.setText((String) (list.get(0)).get("adresse"));
-                });
+                    getTitlee().setText((CharSequence) tmp.get("nameEvent"));
+                    getDateEvent().setText((CharSequence) tmp.get("date"));
+                    getHeure().setText(MessageFormat.format("{0}:{1}", h, m));
+                    getAdresse().setText((String) (tmp.get("adresse")));
+                }
+            }
+        });
     }
 
     public void goHome(View view) {
@@ -92,10 +85,33 @@ public class EventHome extends AppCompatActivity {
 
     public void goSettings(View view) {
         Intent intent = new Intent (this, EventSettings.class);
+        intent.putExtra("id", this.id);
+        startActivity(intent);
+    }
+
+    public void onBtnList(View view){
+        Intent intent = new Intent (this, EventList.class);
         // intent.putExtra();
         startActivity(intent);
     }
 
+    public void setTmp(Map tmp) {
+        this.tmp = tmp;
+    }
 
+    public TextView getTitlee() {
+        return title;
+    }
 
+    public TextView getDateEvent() {
+        return dateEvent;
+    }
+
+    public TextView getHeure() {
+        return heure;
+    }
+
+    public TextView getAdresse() {
+        return adresse;
+    }
 }

@@ -33,6 +33,8 @@ public class EventSettings extends AppCompatActivity{
     private Map tmp;
     private String date;
 
+    private String id;
+
     FirebaseFirestore db;
 
     private int tmpHour;
@@ -43,6 +45,9 @@ public class EventSettings extends AppCompatActivity{
         super.onCreate(savedInstanceState);
         setContentView(R.layout.event_settings);
 
+        Intent intentBase = getIntent();
+        this.id = intentBase.getStringExtra("id");
+
         db = FirebaseFirestore.getInstance();
 
         this.nameEvent = findViewById(R.id.editNameEvent);
@@ -50,7 +55,7 @@ public class EventSettings extends AppCompatActivity{
         this.dateButton = findViewById(R.id.datePickerButton);
         this.timePicker = this.findViewById(R.id.timePicker);
 
-        DocumentReference docRef = db.collection("event").document("1Uk8QBlLn5nLeaXBw4zH");
+        DocumentReference docRef = db.collection("event").document(getId());
         docRef.get().addOnCompleteListener(task -> {
             if (task.isSuccessful()) {
                 DocumentSnapshot document = task.getResult();
@@ -168,7 +173,7 @@ public class EventSettings extends AppCompatActivity{
     public void onBtnConfirmClick(View view){
         Intent intent = new Intent (this, EventHome.class);
 
-        DocumentReference tmp = db.collection("event").document("1Uk8QBlLn5nLeaXBw4zH");
+        DocumentReference tmp = db.collection("event").document(getId());
         if(!getNameEvent().getText().toString().equals("")) {
             tmp
                     .update("nameEvent", getNameEvent().getText().toString())
@@ -246,5 +251,9 @@ public class EventSettings extends AppCompatActivity{
 
     public void setTmpMin(int tmpMin) {
         this.tmpMin = tmpMin;
+    }
+
+    public String getId() {
+        return id;
     }
 }

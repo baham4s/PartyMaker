@@ -1,0 +1,3 @@
+Implémentation image création event
+Deconnection
+suppression évènement -> consulter -> event_name -> parametre

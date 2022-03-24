@@ -14,6 +14,7 @@ import android.widget.Toast;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import com.google.firebase.firestore.DocumentReference;
 import com.google.firebase.firestore.FirebaseFirestore;
 
 import java.text.MessageFormat;
@@ -33,6 +34,7 @@ public class CreateEventTime extends AppCompatActivity {
     private String description;
     private String date;
     private String adresse;
+    private String id;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -85,8 +87,19 @@ public class CreateEventTime extends AppCompatActivity {
 
             db.collection("event")
                     .add(user)
-                    .addOnSuccessListener(documentReference -> Log.d("TAG", "DocumentSnapshot added with ID: " + documentReference.getId()))
+                    .addOnSuccessListener(documentReference -> {
+                        Log.d("TAG", "DocumentSnapshot added with ID: " + documentReference.getId());
+                        setId(documentReference.getId());
+                        DocumentReference dr = db.collection("event").document(getId());
+                        dr
+                                .update("id", getId())
+                                .addOnSuccessListener(aVoid -> Log.d("TAG", "DocumentSnapshot successfully updated!"))
+                                .addOnFailureListener(e -> Log.w("TAG", "Error updating document", e));
+                    })
                     .addOnFailureListener(e -> Log.w("TAG", "Error adding document", e));
+
+
+
             Intent intent = new Intent(this, Home.class);
             startActivity(intent);
         }
@@ -114,7 +127,7 @@ public class CreateEventTime extends AppCompatActivity {
         int month = calendar.get(Calendar.MONTH);
         int day = calendar.get(Calendar.DAY_OF_MONTH);
 
-        int style = AlertDialog.THEME_HOLO_LIGHT;
+        int style = AlertDialog.BUTTON_NEUTRAL;
 
         datePickerDialog = new DatePickerDialog(this, style, dateSetListener, year, month, day);
     }
@@ -128,7 +141,7 @@ public class CreateEventTime extends AppCompatActivity {
     }
 
     private String getMonthFormat(int month) {
-        switch(month){
+        switch(month + 1){
             case 1:
                 return "Janvier";
             case 2:
@@ -172,4 +185,11 @@ public class CreateEventTime extends AppCompatActivity {
         return dateButton;
     }
 
+    public String getId() {
+        return id;
+    }
+
+    public void setId(String id) {
+        this.id = id;
+    }
 }
