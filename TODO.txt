@@ -1,3 +1,18 @@
-Implémentation image création event
+trier par date
 Deconnection
+ardoise
+Invitation
+
+-----------
+
 suppression évènement -> consulter -> event_name -> parametre
+inverser liste eventList
+
+-----------
+
+Implémentation image création event
+
+-----------
+
+Correction Bug :
+Page blanche entre setting et home
