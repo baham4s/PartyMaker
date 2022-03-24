@@ -67,16 +67,6 @@ public class EventList extends AppCompatActivity {
         startActivity(intent);
     }
 
-    public void onBtnBack(View view) {
-        Intent intent = new Intent (this, Home.class);
-        startActivity(intent);
-    }
-
-    public void onBtnNext(View view) {
-        Intent intent = new Intent (this, EventHome.class);
-        startActivity(intent);
-    }
-
     public void setMailUser(String mailUser) {
         this.mailUser = mailUser;
     }

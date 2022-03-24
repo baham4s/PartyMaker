@@ -91,11 +91,6 @@ public class EventCalc extends AppCompatActivity {
         startActivity(intent);
     }
 
-    public void goCalc(View view) {
-        Intent intent = new Intent (this, EventCalc.class);
-        startActivity(intent);
-    }
-
     public void goInvite(View view) {
         Intent intent = new Intent (this, EventInvite.class);
         startActivity(intent);
@@ -103,6 +98,11 @@ public class EventCalc extends AppCompatActivity {
 
     public void goSettings(View view) {
         Intent intent = new Intent (this, EventSettings.class);
+        startActivity(intent);
+    }
+
+    public void onBtnHomeClick(View view) {
+        Intent intent = new Intent (this, EventList.class);
         startActivity(intent);
     }
 

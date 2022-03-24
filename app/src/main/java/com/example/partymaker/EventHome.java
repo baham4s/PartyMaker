@@ -24,6 +24,8 @@ public class EventHome extends AppCompatActivity {
 
     private Map tmp;
 
+    FirebaseFirestore db;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -32,13 +34,16 @@ public class EventHome extends AppCompatActivity {
         Intent intentBase = getIntent();
         this.id = intentBase.getStringExtra("id");
 
-        FirebaseFirestore db = FirebaseFirestore.getInstance();
+        db = FirebaseFirestore.getInstance();
 
         this.dateEvent = findViewById(R.id.textEventDate);
         this.title = findViewById(R.id.textSettings);
         this.heure = findViewById(R.id.textHeureEvent);
         this.adresse = findViewById(R.id.affichageLieu);
+        setInfo();
+    }
 
+    public void setInfo(){
         DocumentReference docRef = db.collection("event").document(this.id);
         docRef.get().addOnCompleteListener(task -> {
             if (task.isSuccessful()) {
@@ -65,21 +70,13 @@ public class EventHome extends AppCompatActivity {
         });
     }
 
-    public void goHome(View view) {
-        Intent intent = new Intent (this, EventHome.class);
-        // intent.putExtra();
-        startActivity(intent);
-    }
-
     public void goCalc(View view) {
         Intent intent = new Intent (this, EventCalc.class);
-        // intent.putExtra();
         startActivity(intent);
     }
 
     public void goInvite(View view) {
         Intent intent = new Intent (this, EventInvite.class);
-        // intent.putExtra();
         startActivity(intent);
     }
 
@@ -91,7 +88,6 @@ public class EventHome extends AppCompatActivity {
 
     public void onBtnList(View view){
         Intent intent = new Intent (this, EventList.class);
-        // intent.putExtra();
         startActivity(intent);
     }
 

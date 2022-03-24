@@ -192,4 +192,9 @@ public class CreateEventTime extends AppCompatActivity {
     public void setId(String id) {
         this.id = id;
     }
+
+    public void onBtnHomeClick(View view) {
+        Intent intent = new Intent (this, Home.class);
+        startActivity(intent);
+    }
 }

@@ -20,6 +20,7 @@
             android:layout_marginTop="20dp"
             android:backgroundTint="#BECFD517"
             android:contentDescription="@string/desc"
+            android:onClick="returnMain"
             android:src="?attr/actionModeCloseDrawable">
 
         </ImageButton>

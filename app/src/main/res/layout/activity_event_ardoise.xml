@@ -20,6 +20,7 @@
             android:layout_marginTop="20dp"
             android:backgroundTint="#BECFD517"
             android:contentDescription="@string/desc"
+            android:onClick="onBtnHomeClick"
             android:src="?attr/actionModeCloseDrawable">
 
         </ImageButton>
@@ -72,7 +73,6 @@
             android:layout_toEndOf="@+id/button_event_home"
             android:backgroundTint="#BECFD517"
             android:drawableTop="@drawable/calculator"
-            android:onClick="goCalc"
             android:text="Ardoise"
             android:textColor="@color/black"
             android:textSize="7sp"

@@ -58,7 +58,6 @@
             android:layout_centerVertical="true"
             android:backgroundTint="#BECFD517"
             android:drawableTop="@drawable/home"
-            android:onClick="goHome"
             android:text="Accueil"
             android:textColor="@color/black"
             android:textSize="7sp"
@@ -108,7 +107,6 @@
             android:textColor="@color/black"
             android:textSize="7sp"
             tools:ignore="HardcodedText" />
-
     </RelativeLayout>
 
     <!-- Content below header and above footer -->

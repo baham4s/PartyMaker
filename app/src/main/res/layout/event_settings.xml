@@ -103,7 +103,6 @@
             android:layout_toEndOf="@+id/button_event_invite"
             android:backgroundTint="#BECFD517"
             android:drawableTop="@drawable/settings"
-            android:onClick="goSettings"
             android:text="Paramètre"
             android:textColor="@color/black"
             android:textSize="7sp"

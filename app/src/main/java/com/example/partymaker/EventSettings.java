@@ -148,25 +148,16 @@ public class EventSettings extends AppCompatActivity{
 
     public void goHome(View view) {
         Intent intent = new Intent (this, EventHome.class);
-        // intent.putExtra();
         startActivity(intent);
     }
 
     public void goCalc(View view) {
         Intent intent = new Intent (this, EventCalc.class);
-        // intent.putExtra();
         startActivity(intent);
     }
 
     public void goInvite(View view) {
         Intent intent = new Intent (this, EventInvite.class);
-        // intent.putExtra();
-        startActivity(intent);
-    }
-
-    public void goSettings(View view) {
-        Intent intent = new Intent (this, EventSettings.class);
-        // intent.putExtra();
         startActivity(intent);
     }
 
