@@ -60,38 +60,45 @@ public class Connection extends AppCompatActivity {
         String email = this.mail.getText().toString();
         String password = this.password.getText().toString();
 
-        mAuth.createUserWithEmailAndPassword(email, password)
-                .addOnCompleteListener(this, task -> {
-                    if(isValidEmail(email) && isValidPassword(password)){
-                        Toast.makeText(Connection.this, "Problème mail et mots de passe", Toast.LENGTH_SHORT).show();
-                    }
-                    else if(isValidEmail(email)){
-                        Toast.makeText(Connection.this, "Problème adresse mail", Toast.LENGTH_SHORT).show();
-                    }
-                    else if(isValidPassword(password)){
-                        Toast.makeText(Connection.this, "Problème mots de passe", Toast.LENGTH_SHORT).show();
-                    }
-                    else if(task.isSuccessful()){
-                        startActivity(intent);
-                        Toast.makeText(this,"Vous ete connecté avec l'adresse mail : " + email, Toast.LENGTH_LONG).show();
-                    }
-                    else{
-                        Toast.makeText(this,"Email déja présent dans la BDD", Toast.LENGTH_LONG).show();
-                    }
-                });
+
+        if(password.equals("") && email.equals("")){
+            Toast.makeText(this,"Champs vide", Toast.LENGTH_LONG).show();
+        }
+        else {
+            mAuth.createUserWithEmailAndPassword(email, password)
+                    .addOnCompleteListener(this, task -> {
+                        if (isValidEmail(email) && isValidPassword(password)) {
+                            Toast.makeText(Connection.this, "Problème mail et mots de passe", Toast.LENGTH_SHORT).show();
+                        } else if (isValidEmail(email)) {
+                            Toast.makeText(Connection.this, "Problème adresse mail", Toast.LENGTH_SHORT).show();
+                        } else if (isValidPassword(password)) {
+                            Toast.makeText(Connection.this, "Problème mots de passe", Toast.LENGTH_SHORT).show();
+                        } else if (task.isSuccessful()) {
+                            startActivity(intent);
+                            Toast.makeText(this, "Vous ete connecté avec l'adresse mail : " + email, Toast.LENGTH_LONG).show();
+                        } else {
+                            Toast.makeText(this, "Email déja présent dans la BDD", Toast.LENGTH_LONG).show();
+                        }
+                    });
+        }
     }
 
     public void onBtnConnectClick(View view) {
         Intent intent = new Intent (this, Home.class);
 
-        mAuth.signInWithEmailAndPassword(this.mail.getText().toString(), this.password.getText().toString())
-                .addOnCompleteListener(this, task -> {
-                    if (task.isSuccessful()) {
-                        startActivity(intent);
-                        Toast.makeText(this,"Vous ete connecté avec l'adresse mail : " + this.mail.getText().toString(), Toast.LENGTH_LONG).show();
-                    } else {
-                        Toast.makeText(this,"Identifiant incorect", Toast.LENGTH_LONG).show();
-                    }
-                });
+        if(this.password.getText().toString().equals("") && this.mail.getText().toString().equals("")){
+            Toast.makeText(this,"Champs vide", Toast.LENGTH_LONG).show();
+        }
+        else {
+            mAuth.signInWithEmailAndPassword(this.mail.getText().toString(), this.password.getText().toString())
+                    .addOnCompleteListener(this, task -> {
+                        if (task.isSuccessful()) {
+                            startActivity(intent);
+                            Toast.makeText(this, "Vous ete connecté avec l'adresse mail : " + this.mail.getText().toString(), Toast.LENGTH_LONG).show();
+                        } else {
+                            Toast.makeText(this, "Identifiant incorect", Toast.LENGTH_LONG).show();
+                        }
+                    });
+        }
     }
 }
