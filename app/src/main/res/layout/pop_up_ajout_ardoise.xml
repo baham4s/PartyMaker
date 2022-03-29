@@ -24,7 +24,7 @@
         android:layout_height="wrap_content"
         android:layout_below="@+id/editTextNomDepense"
         android:layout_centerHorizontal="true"
-        android:layout_marginTop="5dp"
+        android:layout_marginTop="30dp"
         android:autofillHints="name"
         android:fontFamily="sans-serif"
         android:hint="Montant "
@@ -33,25 +33,12 @@
         tools:ignore="HardcodedText" />
 
     <Button
-        android:id="@+id/datePickerButton"
-        style="@style/Widget.AppCompat.Spinner.DropDown"
-        android:layout_width="200dp"
-        android:layout_height="wrap_content"
-        android:layout_below="@+id/editTextSommeDepense"
-        android:layout_marginTop="5dp"
-        android:layout_centerHorizontal="true"
-        android:contentDescription="time  "
-        android:onClick="openDatePicker"
-        android:text=""
-        android:textSize="20sp" />
-
-    <Button
         android:id="@+id/buttonDialogInvite"
         android:layout_width="160dp"
         android:layout_height="wrap_content"
-        android:layout_below="@+id/datePickerButton"
+        android:layout_below="@+id/editTextSommeDepense"
         android:layout_centerHorizontal="true"
-        android:layout_marginTop="20dp"
+        android:layout_marginTop="59dp"
         android:text="Ajouter une dépense"
         tools:ignore="HardcodedText" />
 

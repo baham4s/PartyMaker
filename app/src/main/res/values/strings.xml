@@ -26,4 +26,9 @@
     <string name="la_date_du_calendrier">La date du calendrier</string>
     <string name="participants">Participants</string>
     <string name="logo">Logo</string>
+    <string name="Ajouter">Ajouter</string>
+    <string name="Annuler">Annuler</string>
+    <string name="total">Total =</string>
+    <string name="_0_euros">0 euros</string>
+    <string name="ajouter">Ajouter</string>
 </resources>

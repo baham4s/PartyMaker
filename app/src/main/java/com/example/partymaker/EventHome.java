@@ -72,11 +72,13 @@ public class EventHome extends AppCompatActivity {
 
     public void goCalc(View view) {
         Intent intent = new Intent (this, EventCalc.class);
+        intent.putExtra("id", this.id);
         startActivity(intent);
     }
 
     public void goInvite(View view) {
         Intent intent = new Intent (this, EventInvite.class);
+        intent.putExtra("id", this.id);
         startActivity(intent);
     }
 

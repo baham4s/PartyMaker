@@ -21,7 +21,7 @@ public class EventList extends AppCompatActivity {
     private ListView eList;
     private String mailUser;
 
-    private ArrayList<DataList> dataLists;
+    private ArrayList<DataEventList> dataEventLists;
 
     FirebaseFirestore db = FirebaseFirestore.getInstance();
     FirebaseAuth mAuth = FirebaseAuth.getInstance();
@@ -34,7 +34,7 @@ public class EventList extends AppCompatActivity {
         setContentView(R.layout.activity_event_list);
 
         this.eList = findViewById(R.id.ListViewEvent);
-        dataLists = new ArrayList<>();
+        dataEventLists = new ArrayList<>();
 
         setMailUser(user != null ? user.getEmail() : null);
 
@@ -49,10 +49,10 @@ public class EventList extends AppCompatActivity {
                     if (!queryDocumentSnapshots.isEmpty()) {
                         List<DocumentSnapshot> list = queryDocumentSnapshots.getDocuments();
                         for (DocumentSnapshot d : list) {
-                            DataList dList = d.toObject(DataList.class);
-                            dataLists.add(dList);
+                            DataEventList dList = d.toObject(DataEventList.class);
+                            dataEventLists.add(dList);
                         }
-                        AdapterList adapter = new AdapterList(EventList.this, dataLists);
+                        AdapterEventList adapter = new AdapterEventList(EventList.this, dataEventLists);
                         eList.setAdapter(adapter);
                     } else {
                         Toast.makeText(EventList.this, "Aucun évènement trouvé", Toast.LENGTH_SHORT).show();

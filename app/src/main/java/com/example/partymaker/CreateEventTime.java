@@ -72,6 +72,10 @@ public class CreateEventTime extends AppCompatActivity {
 
     public void confirmEvent(View view) {
         FirebaseFirestore db = FirebaseFirestore.getInstance();
+
+        Map<String, String> ardoise = new HashMap<String, String>();
+
+
         if(date == null){
             Toast.makeText(this, "Vous devez renseigner une date", Toast.LENGTH_SHORT).show();
         }
@@ -84,6 +88,7 @@ public class CreateEventTime extends AppCompatActivity {
             user.put("date", date);
             user.put("heure", this.timePicker.getHour());
             user.put("minute", this.timePicker.getMinute());
+            user.put("ardoise", ardoise);
 
             db.collection("event")
                     .add(user)
@@ -97,7 +102,6 @@ public class CreateEventTime extends AppCompatActivity {
                                 .addOnFailureListener(e -> Log.w("TAG", "Error updating document", e));
                     })
                     .addOnFailureListener(e -> Log.w("TAG", "Error adding document", e));
-
 
 
             Intent intent = new Intent(this, Home.class);

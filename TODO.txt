@@ -15,4 +15,10 @@ Implémentation image création event
 -----------
 
 Correction Bug :
-Page blanche entre setting et home
+Page blanche entre setting et home --> OK
+
+-----------
+Test :
+Bouton retour du mobile && création event ou modification --> voir comportement
+    Si sa casse pas la BDD ou d'event anormale
+

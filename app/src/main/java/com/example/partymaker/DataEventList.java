@@ -1,14 +1,16 @@
 package com.example.partymaker;
 
-public class DataList {
+import android.util.Log;
+
+public class DataEventList {
 
     private String nameEvent;
     private String date;
     private String id;
 
-    public DataList(){}
+    public DataEventList(){}
 
-    public DataList(String nameEvent, String date, String id){
+    public DataEventList(String nameEvent, String date, String id){
         this.nameEvent = nameEvent;
         this.date = date;
         this.id = id;
@@ -28,5 +30,14 @@ public class DataList {
 
     public void setId(String id) {
         this.id = id;
+    }
+
+    @Override
+    public String toString() {
+        return "DataEventList{" +
+                "nameEvent='" + nameEvent + '\'' +
+                ", date='" + date + '\'' +
+                ", id='" + id + '\'' +
+                '}';
     }
 }

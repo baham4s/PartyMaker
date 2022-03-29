@@ -1,103 +1,165 @@
 package com.example.partymaker;
 
-import android.app.AlertDialog;
-import android.app.Dialog;
-import android.content.DialogInterface;
+import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
 import android.util.Log;
-import android.view.LayoutInflater;
 import android.view.View;
 import android.widget.Button;
 import android.widget.ListView;
 import android.widget.TextView;
+import android.widget.Toast;
 
+import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.fragment.app.Fragment;
+import androidx.fragment.app.FragmentTransaction;
 
+import com.google.android.gms.tasks.OnCompleteListener;
+import com.google.android.gms.tasks.OnSuccessListener;
+import com.google.android.gms.tasks.Task;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
+import com.google.firebase.firestore.DocumentReference;
+import com.google.firebase.firestore.DocumentSnapshot;
 import com.google.firebase.firestore.FirebaseFirestore;
 import com.google.firebase.firestore.QueryDocumentSnapshot;
+import com.google.firebase.firestore.QuerySnapshot;
 
 import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.List;
 import java.util.Map;
 
-public class EventCalc extends AppCompatActivity {
 
-    private ListView lsv;
-    private Button addBtn;
-    private ArrayList<Map<String, Object>> list = new ArrayList<java.util.Map<String, Object>>();
-
+public class EventCalc extends AppCompatActivity implements ArdoiseDialogFragment.SendMessages{
+    private Map tmp;
     private TextView title;
+    private Button addBtn;
+    private String id;
+
+    private ListView eList;
+    private String mailUser;
+
+    private ArrayList<DataArdoiseList> dataArdoiseList;
+
+    private String msgLibelle = "";
+    private String msgPrix = "";
+
+    private Context context;
+
+    FirebaseFirestore db = FirebaseFirestore.getInstance();;
+    FirebaseAuth mAuth = FirebaseAuth.getInstance();
+    FirebaseUser user = mAuth.getCurrentUser();
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_event_ardoise);
 
+        Intent intentBase = getIntent();
+        setId(intentBase.getStringExtra("id"));
+
+        this.eList = findViewById(R.id.ListViewAroidse);
+        dataArdoiseList = new ArrayList<>();
+
         this.title = findViewById(R.id.textSettings);
-        this.lsv = findViewById(R.id.ListViewAroidse);
         this.addBtn = findViewById(R.id.addBtnArdoise);
+        setMailUser(user != null ? user.getEmail() : null);
 
-        FirebaseFirestore db = FirebaseFirestore.getInstance();
-        FirebaseAuth mAuth = FirebaseAuth.getInstance();
-        FirebaseUser user = mAuth.getCurrentUser();
+        // Récupération du titre
+        DocumentReference docRef = db.collection("event").document(getId());
+        docRef.get().addOnCompleteListener(task -> {
+            if (task.isSuccessful()) {
+                DocumentSnapshot document = task.getResult();
+                if (document.exists()) {
+                    setTmp(document.getData());
+                    getTitlee().setText((CharSequence) tmp.get("nameEvent"));
+                }
+            }
+        });
 
-        String mailUser = user != null ? user.getEmail() : null;
+        // click sur btnAjouter
+        addBtn.setOnClickListener(new View.OnClickListener() {
+            public void onClick(View v) {
+                ArdoiseDialogFragment ardoiseDialogFragment = new ArdoiseDialogFragment();
 
-        db.collection("event")
-                .whereEqualTo("mail", mailUser)
-                .get()
-                .addOnCompleteListener(task -> {
-                    if (task.isSuccessful()) {
-                        for (QueryDocumentSnapshot document : task.getResult()) {
-                            Log.d("TAG", document.getId() + " => " + document.getData());
-                            list.add(document.getData());
-                        }
-                    } else {
-                        Log.d("TAG", "Aucun doc trouvé", task.getException());
-                    }
-                    this.title.setText((String) (list.get(0)).get("nameEvent"));
-                });
+                Bundle bundle = new Bundle();
+                bundle.putBoolean("notAlertDialog", true);
+
+                ardoiseDialogFragment.setArguments(bundle);
+
+                FragmentTransaction ft = getSupportFragmentManager().beginTransaction();
+                Fragment prev = getSupportFragmentManager().findFragmentByTag("dialog");
+                if (prev != null) {
+                    ft.remove(prev);
+                }
+                ft.addToBackStack(null);
+
+                ardoiseDialogFragment.setId(getId());
+                ardoiseDialogFragment.show(ft, "dialog");
+            }
+        });
+
+        getDataDB();
     }
 
-//    public Dialog onCreateDialog(Bundle savedInstanceState) {
-//        AlertDialog.Builder builder = new AlertDialog.Builder(getActivity());
-//        // Get the layout inflater
-//        LayoutInflater inflater = requireActivity().getLayoutInflater();
-//
-//        // Inflate and set the layout for the dialog
-//        // Pass null as the parent view because its going in the dialog layout
-//        // Nom du fichier xml générantla pop up
-//        builder.setView(inflater.inflate(R.layout.dialog_signin, null))
-//                // Add action buttons
-//                .setPositiveButton(R.string.signin, (DialogInterface.OnClickListener) (dialog, id) -> {
-//
-//                })
-//                .setNegativeButton(R.string.cancel, new DialogInterface.OnClickListener() {
-//                    public void onClick(DialogInterface dialog, int id) {
-//                        LoginDialogFragment.this.getDialog().cancel();
+    private void getDataDB() {
+        db.collection("event")
+                .whereEqualTo("id", getId())
+                .get()
+                .addOnSuccessListener(queryDocumentSnapshots -> {
+                    if (!queryDocumentSnapshots.isEmpty()) {
+                        List<DocumentSnapshot> list = queryDocumentSnapshots.getDocuments();
+                        for (DocumentSnapshot d : list) {
+                            DataArdoiseList dList = d.toObject(DataArdoiseList.class);
+                            dataArdoiseList.add(dList);
+                        }
+                        AdapterArdoiseList adapter = new AdapterArdoiseList(EventCalc.this, dataArdoiseList);
+                        eList.setAdapter(adapter);
+                    } else {
+                        Toast.makeText(EventCalc.this, "Aucun évènement trouvé", Toast.LENGTH_SHORT).show();
+                    }
+                }).addOnFailureListener(e -> {
+            Toast.makeText(EventCalc.this, "Erreur réseau", Toast.LENGTH_SHORT).show();
+        });
+
+//        db.collection("event")
+//                .whereEqualTo("id", getId())
+//                .get()
+//                .addOnCompleteListener(new OnCompleteListener<QuerySnapshot>() {
+//                    @Override
+//                    public void onComplete(@NonNull Task<QuerySnapshot> task) {
+//                        if (task.isSuccessful()) {
+//                            for (QueryDocumentSnapshot document : task.getResult()) {
+//                                HashMap dList = (HashMap) document.get("ardoise");
+//                                Log.d("TEsteeee", dList.toString());
+//                            }
+//                            AdapterArdoiseList adapter = new AdapterArdoiseList(EventCalc.this, dataArdoiseList);
+//                            eList.setAdapter(adapter);
+//                        } else {
+//                            Log.d("TAG", "Error getting documents: ", task.getException());
+//                        }
 //                    }
 //                });
-//        return builder.create();
-//    }
-
-//    private Dialog requireActivity() {
-//    }
-
+    }
 
     public void goHome(View view) {
         Intent intent = new Intent (this, EventHome.class);
+        intent.putExtra("id", this.id);
         startActivity(intent);
     }
 
     public void goInvite(View view) {
         Intent intent = new Intent (this, EventInvite.class);
+        intent.putExtra("id", this.id);
         startActivity(intent);
     }
 
     public void goSettings(View view) {
         Intent intent = new Intent (this, EventSettings.class);
+        intent.putExtra("id", this.id);
         startActivity(intent);
     }
 
@@ -106,7 +168,71 @@ public class EventCalc extends AppCompatActivity {
         startActivity(intent);
     }
 
-//    public void addMoney(View view){
-//
-//    }
+
+
+
+
+
+
+    public String getId() {
+        return id;
+    }
+
+    public void setId(String id) {
+        this.id = id;
+    }
+
+    public TextView getTitlee() {
+        return title;
+    }
+
+    public void setTitle(TextView title) {
+        this.title = title;
+    }
+
+    public Map getTmp() {
+        return tmp;
+    }
+
+    public void setTmp(Map tmp) {
+        this.tmp = tmp;
+    }
+
+    public Context getContext() {
+        return context;
+    }
+
+    public void setContext(Context context) {
+        this.context = context;
+    }
+
+    public String getMsgLibelle() {
+        return msgLibelle;
+    }
+
+    public void setMsgLibelle(String msgLibelle) {
+        this.msgLibelle = msgLibelle;
+    }
+
+    public String getMsgPrix() {
+        return msgPrix;
+    }
+
+    public void setMsgPrix(String msgPrix) {
+        this.msgPrix = msgPrix;
+    }
+
+    @Override
+    public void iAmMSG(String msg1, String msg2) {
+        setMsgLibelle(msg1);
+        setMsgPrix(msg2);
+    }
+
+    public String getMailUser() {
+        return mailUser;
+    }
+
+    public void setMailUser(String mailUser) {
+        this.mailUser = mailUser;
+    }
 }

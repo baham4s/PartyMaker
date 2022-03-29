@@ -26,8 +26,6 @@ public class Settings extends AppCompatActivity {
 
     private String newPasswordString;
 
-    private Switch theme;
-
     private FirebaseAuth mAuth;
     private FirebaseUser user;
 
@@ -41,8 +39,6 @@ public class Settings extends AppCompatActivity {
         this.newPassword = findViewById(R.id.editTextSettingsUserNewMDP);
         this.newPassword2 = findViewById(R.id.editTextSettingsUserNewMDPConfirm);
 
-        this.theme = findViewById(R.id.switchTheme);
-        
         mAuth = FirebaseAuth.getInstance();
         user = FirebaseAuth.getInstance().getCurrentUser();
     }

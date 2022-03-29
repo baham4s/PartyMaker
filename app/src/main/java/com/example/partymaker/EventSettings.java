@@ -97,7 +97,7 @@ public class EventSettings extends AppCompatActivity{
         int month = calendar.get(Calendar.MONTH);
         int day = calendar.get(Calendar.DAY_OF_MONTH);
 
-        int style = AlertDialog.THEME_HOLO_LIGHT;
+        int style = AlertDialog.BUTTON_NEUTRAL;
 
         datePickerDialog = new DatePickerDialog(this, style, dateSetListener, year, month, day);
     }
@@ -148,16 +148,19 @@ public class EventSettings extends AppCompatActivity{
 
     public void goHome(View view) {
         Intent intent = new Intent (this, EventHome.class);
+        intent.putExtra("id", this.id);
         startActivity(intent);
     }
 
     public void goCalc(View view) {
         Intent intent = new Intent (this, EventCalc.class);
+        intent.putExtra("id", this.id);
         startActivity(intent);
     }
 
     public void goInvite(View view) {
         Intent intent = new Intent (this, EventInvite.class);
+        intent.putExtra("id", this.id);
         startActivity(intent);
     }
 
@@ -204,7 +207,7 @@ public class EventSettings extends AppCompatActivity{
     }
 
     public void onBtnBackHome(View view) {
-        Intent intent = new Intent (this, Home.class);
+        Intent intent = new Intent (this, EventList.class);
         startActivity(intent);
     }
 
