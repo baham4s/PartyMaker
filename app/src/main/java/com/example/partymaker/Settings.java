@@ -1,12 +1,15 @@
 package com.example.partymaker;
 
+import android.annotation.SuppressLint;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.EditText;
+import android.widget.Switch;
 import android.widget.Toast;
 
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.appcompat.app.AppCompatDelegate;
 
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
@@ -25,6 +28,8 @@ public class Settings extends AppCompatActivity {
     private EditText newPassword;
     private EditText newPassword2;
     private String newPasswordString;
+    @SuppressLint("UseSwitchCompatOrMaterialCode")
+    private Switch switch1;
 
     private FirebaseAuth mAuth;
     private FirebaseUser user;
@@ -40,11 +45,23 @@ public class Settings extends AppCompatActivity {
         this.actualPassword = findViewById(R.id.editTextSettingsUserCurrentMDP);
         this.newPassword = findViewById(R.id.editTextSettingsUserNewMDP);
         this.newPassword2 = findViewById(R.id.editTextSettingsUserNewMDPConfirm);
+        this.switch1 = findViewById(R.id.switchTheme);
 
         // Initialize the FirebaseAuth instance
         mAuth = FirebaseAuth.getInstance();
         // Get the current user
         user = FirebaseAuth.getInstance().getCurrentUser();
+
+        // Set the theme according to the switch
+        switch1.setOnClickListener(v -> {
+            if(switch1.isChecked()){
+                // Set the theme to dark
+                AppCompatDelegate.setDefaultNightMode(AppCompatDelegate.MODE_NIGHT_YES);
+            } else {
+                // Set the theme to light
+                AppCompatDelegate.setDefaultNightMode(AppCompatDelegate.MODE_NIGHT_NO);
+            }
+        });
     }
 
     // Check if the new password is valid
