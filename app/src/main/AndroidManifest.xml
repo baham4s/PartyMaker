@@ -10,6 +10,12 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.PartyMaker">
         <activity
+            android:name=".Contact"
+            android:exported="false" />
+        <activity
+            android:name=".About"
+            android:exported="false" />
+        <activity
             android:name=".EventList"
             android:exported="false" />
         <activity

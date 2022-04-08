@@ -109,8 +109,9 @@
             android:id="@+id/button_propos"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="A Propos"
             android:clickable="false"
+            android:text="A Propos"
+            android:onClick="goToAbout"
             tools:ignore="HardcodedText" />
 
         <Button
@@ -121,6 +122,7 @@
             android:layout_marginStart="50dp"
             android:text="Contact"
             android:clickable="false"
+            android:onClick="goToContact"
             tools:ignore="HardcodedText" />
 
     </RelativeLayout>

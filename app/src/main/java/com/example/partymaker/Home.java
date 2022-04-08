@@ -44,4 +44,14 @@ public class Home extends AppCompatActivity {
         Intent intent = new Intent (this, Connection.class);
         startActivity(intent);
     }
+
+    public void goToAbout(View view) {
+        Intent intent = new Intent (this, About.class);
+        startActivity(intent);
+    }
+
+    public void goToContact(View view) {
+        Intent intent = new Intent (this, Contact.class);
+        startActivity(intent);
+    }
 }
