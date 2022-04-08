@@ -8,6 +8,13 @@ import android.widget.Toast;
 import androidx.appcompat.app.AppCompatActivity;
 
 import com.firebase.ui.auth.AuthUI;
+
+// TODO: Auto-generated Javadoc on all class
+// TODO: Implement image upload
+// TODO: Delete account
+// TODO: Send email to invite friends
+// TODO: Sort by date in list event
+
 // Class: Home
 // Description: This class is the main activity of the app. It is the first activity that the user sees when they are connected.
 public class Home extends AppCompatActivity {
