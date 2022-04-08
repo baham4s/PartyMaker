@@ -3,7 +3,9 @@ package com.example.partymaker;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
+import android.widget.ListView;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import androidx.appcompat.app.AppCompatActivity;
 
@@ -12,19 +14,27 @@ import com.google.firebase.firestore.DocumentSnapshot;
 import com.google.firebase.firestore.FirebaseFirestore;
 
 import java.text.MessageFormat;
+import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.List;
 import java.util.Map;
 
-public class EventHome extends AppCompatActivity {
-
+// Class: EventHome
+// Description: This class is the home page of the event. It displays the event name, event date event time, the event description, and the list of users that are attending the event.
+public class EventHome extends AppCompatActivity implements InviteDialogFragment.SendMessagesInvite, AdapterInviteList.sendKeyInvite{
+    // Initialize variables
     private TextView title;
     private TextView dateEvent;
     private TextView heure;
     private TextView adresse;
     private String id;
-
     private Map tmp;
+    private ListView eList;
+    private ArrayList<DataInviteList> dataInviteLists;
+    private int i = 0;
 
-    FirebaseFirestore db;
+    // Initialize FirebaseFirestore instance
+    FirebaseFirestore db = FirebaseFirestore.getInstance();
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -34,14 +44,45 @@ public class EventHome extends AppCompatActivity {
         Intent intentBase = getIntent();
         this.id = intentBase.getStringExtra("id");
 
-        db = FirebaseFirestore.getInstance();
+        this.eList = findViewById(R.id.ListViewParticipant);
+        dataInviteLists = new ArrayList<>();
 
         this.dateEvent = findViewById(R.id.textEventDate);
         this.title = findViewById(R.id.textSettings);
         this.heure = findViewById(R.id.textHeureEvent);
         this.adresse = findViewById(R.id.affichageLieu);
+
         setInfo();
+        getDataDB();
     }
+
+    public void getDataDB() {
+        db.collection("event")
+                .whereEqualTo("id", getId())
+                .get()
+                .addOnSuccessListener(queryDocumentSnapshots -> {
+                    if (!queryDocumentSnapshots.isEmpty()) {
+                        List<DocumentSnapshot> list = queryDocumentSnapshots.getDocuments();
+                        for (DocumentSnapshot d : list) {
+                            DataInviteList dList = d.toObject(DataInviteList.class);
+                            for(int j = 0; j < dList.getCount(); j++) {
+                                HashMap<String, String> value = new HashMap<>();
+                                value.put(dList.getKey(i), dList.getValue(i));
+
+                                DataInviteList tmp = new DataInviteList(value);
+
+                                i+=1;
+                                dataInviteLists.add(tmp);
+                            }
+                        }
+                        AdapterInviteList adapter = new AdapterInviteList(EventHome.this, dataInviteLists, getId());
+                        eList.setAdapter(adapter);
+                    } else {
+                        Toast.makeText(EventHome.this, "Aucun évènement trouvé", Toast.LENGTH_SHORT).show();
+                    }
+                }).addOnFailureListener(e -> Toast.makeText(EventHome.this, "Erreur réseau", Toast.LENGTH_SHORT).show());
+    }
+
 
     public void setInfo(){
         DocumentReference docRef = db.collection("event").document(this.id);
@@ -111,5 +152,37 @@ public class EventHome extends AppCompatActivity {
 
     public TextView getAdresse() {
         return adresse;
+    }
+
+    public String getId(){
+        return this.id;
+    }
+
+    public void setId(String id) {
+        this.id = id;
+    }
+
+    @Override
+    public void sendMessage(Boolean message) {
+        if(message) {
+            finish();
+            Intent intent = new Intent (this, EventInvite.class);
+            intent.putExtra("id", this.id);
+            startActivity(intent);
+        }
+    }
+
+    @Override
+    public void sendKey(Boolean message) {
+        if(message) {
+            finish();
+            Intent intent = new Intent (this, EventInvite.class);
+            intent.putExtra("id", this.id);
+            startActivity(intent);
+        }
+    }
+
+    @Override
+    public void onBackPressed() {
     }
 }
