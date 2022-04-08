@@ -7,35 +7,35 @@
     android:background="#61CFD517">
 
     <EditText
-        android:id="@+id/editTextMail"
-        android:autofillHints="emailAddress"
+        android:id="@+id/editTextNom"
         android:layout_width="200dp"
         android:layout_height="wrap_content"
         android:layout_centerHorizontal="true"
         android:layout_marginTop="10dp"
+        android:autofillHints="emailAddress"
         android:hint="Nom"
-        tools:ignore="HardcodedText"
         android:inputType="textEmailAddress"
-        android:minHeight="48dp" />
+        android:minHeight="48dp"
+        tools:ignore="HardcodedText" />
 
     <EditText
-        android:id="@+id/editTextNom"
-        android:autofillHints="name"
+        android:id="@+id/editTextMail"
         android:layout_width="200dp"
         android:layout_height="wrap_content"
-        android:layout_below="@+id/editTextMail"
+        android:layout_below="@+id/editTextNom"
         android:layout_centerHorizontal="true"
+        android:autofillHints="name"
         android:fontFamily="sans-serif"
         android:hint="Mail "
-        tools:ignore="HardcodedText"
-        android:inputType="textPassword"
-        android:minHeight="48dp" />
+        android:inputType="textEmailAddress"
+        android:minHeight="48dp"
+        tools:ignore="HardcodedText" />
 
     <ImageView
         android:id="@+id/imageIconPreview"
         android:layout_width="50dp"
         android:layout_height="50dp"
-        android:layout_below="@+id/editTextNom"
+        android:layout_below="@+id/editTextMail"
         android:layout_centerHorizontal="true"
         android:layout_marginTop="10dp"
         android:src="@drawable/user"

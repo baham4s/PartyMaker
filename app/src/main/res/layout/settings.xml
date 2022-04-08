@@ -70,7 +70,7 @@
             android:layout_marginLeft="25dp"
             android:layout_marginRight="25dp"
             android:autofillHints="text"
-            android:hint="nouvelle adresse mail"
+            android:hint="Votre adresse mail"
             android:inputType="text"
             android:minHeight="48dp"
             tools:ignore="HardcodedText" />
@@ -97,7 +97,7 @@
             android:layout_marginTop="10dp"
             android:layout_marginRight="25dp"
             android:autofillHints="text"
-            android:hint="mot de passe actuel"
+            android:hint="Mot de passe actuel"
             android:inputType="textPassword"
             android:minHeight="48dp"
             tools:ignore="HardcodedText" />
@@ -111,7 +111,7 @@
             android:layout_marginTop="10dp"
             android:layout_marginRight="25dp"
             android:autofillHints="text"
-            android:hint="nouveau mot de passe"
+            android:hint="Nouveau mot de passe"
             android:inputType="textPassword"
             android:minHeight="48dp"
             tools:ignore="HardcodedText" />
@@ -125,7 +125,7 @@
             android:layout_marginTop="10dp"
             android:layout_marginRight="25dp"
             android:autofillHints="text"
-            android:hint="confirmer nouveau mot de passe"
+            android:hint="Confirmer le nouveau mot de passe"
             android:inputType="textPassword"
             android:minHeight="48dp"
             tools:ignore="HardcodedText" />
@@ -135,10 +135,10 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_below="@+id/editTextSettingsUserNewMDPConfirm"
-            android:layout_marginLeft="25dp"
+            android:layout_marginStart="25dp"
             android:layout_marginTop="25dp"
             android:minHeight="48dp"
-            android:text="Thème Sombre"
+            android:text="@string/theme_sombre"
             android:textColor="#000000"
             android:textSize="20sp"
             android:textStyle="bold"
@@ -164,8 +164,8 @@
                 android:layout_width="160dp"
                 android:layout_height="wrap_content"
                 android:layout_marginStart="20dp"
-                android:layout_toRightOf="@+id/button_CancelSettings"
-                android:onClick="goCreateEvent2"
+                android:layout_toEndOf="@+id/button_CancelSettings"
+                android:onClick="goHome"
                 android:text="Confirmer"
                 tools:ignore="HardcodedText" />
 

@@ -14,7 +14,7 @@
         android:layout_marginTop="10dp"
         android:autofillHints="emailAddress"
         android:hint="Libellé"
-        android:inputType="textEmailAddress"
+        android:inputType="text"
         android:minHeight="48dp"
         tools:ignore="HardcodedText" />
 
@@ -28,7 +28,7 @@
         android:autofillHints="name"
         android:fontFamily="sans-serif"
         android:hint="Montant "
-        android:inputType="textPassword"
+        android:inputType="numberDecimal"
         android:minHeight="48dp"
         tools:ignore="HardcodedText" />
 

@@ -127,7 +127,7 @@
             tools:ignore="HardcodedText" />
 
         <ListView
-            android:id="@+id/ListViewAroidse"
+            android:id="@+id/ListViewPeople"
             android:layout_width="wrap_content"
             android:layout_height="450dp"
             android:layout_below="@+id/textParticantadd"

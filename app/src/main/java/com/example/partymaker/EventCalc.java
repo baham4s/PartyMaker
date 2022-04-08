@@ -6,25 +6,20 @@ import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
 import android.widget.Button;
+import android.widget.ImageButton;
 import android.widget.ListView;
 import android.widget.TextView;
 import android.widget.Toast;
 
-import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentTransaction;
 
-import com.google.android.gms.tasks.OnCompleteListener;
-import com.google.android.gms.tasks.OnSuccessListener;
-import com.google.android.gms.tasks.Task;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
 import com.google.firebase.firestore.DocumentReference;
 import com.google.firebase.firestore.DocumentSnapshot;
 import com.google.firebase.firestore.FirebaseFirestore;
-import com.google.firebase.firestore.QueryDocumentSnapshot;
-import com.google.firebase.firestore.QuerySnapshot;
 
 import java.util.ArrayList;
 import java.util.HashMap;
@@ -32,23 +27,23 @@ import java.util.List;
 import java.util.Map;
 
 
-public class EventCalc extends AppCompatActivity implements ArdoiseDialogFragment.SendMessages{
+public class EventCalc extends AppCompatActivity implements ArdoiseDialogFragment.SendMessages, AdapterArdoiseList.sendKey {
     private Map tmp;
     private TextView title;
-    private Button addBtn;
+    private TextView totalPrix;
     private String id;
+    private String key;
 
     private ListView eList;
     private String mailUser;
 
     private ArrayList<DataArdoiseList> dataArdoiseList;
 
-    private String msgLibelle = "";
-    private String msgPrix = "";
-
     private Context context;
 
-    FirebaseFirestore db = FirebaseFirestore.getInstance();;
+    private int i = 0;
+
+    FirebaseFirestore db = FirebaseFirestore.getInstance();
     FirebaseAuth mAuth = FirebaseAuth.getInstance();
     FirebaseUser user = mAuth.getCurrentUser();
 
@@ -65,7 +60,8 @@ public class EventCalc extends AppCompatActivity implements ArdoiseDialogFragmen
         dataArdoiseList = new ArrayList<>();
 
         this.title = findViewById(R.id.textSettings);
-        this.addBtn = findViewById(R.id.addBtnArdoise);
+        Button addBtn = findViewById(R.id.addBtnArdoise);
+        this.totalPrix = findViewById(R.id.totalArdoise);
         setMailUser(user != null ? user.getEmail() : null);
 
         // Récupération du titre
@@ -80,69 +76,55 @@ public class EventCalc extends AppCompatActivity implements ArdoiseDialogFragmen
             }
         });
 
+        ArdoiseDialogFragment ardoiseDialogFragment = new ArdoiseDialogFragment();
+        Bundle bundle = new Bundle();
+        bundle.putBoolean("notAlertDialog", true);
+
+        ardoiseDialogFragment.setArguments(bundle);
+
+        FragmentTransaction ft = getSupportFragmentManager().beginTransaction();
+        Fragment prev = getSupportFragmentManager().findFragmentByTag("dialog");
+        if (prev != null) {
+            ft.remove(prev);
+        }
+        ft.addToBackStack(null);
+
+        ardoiseDialogFragment.setId(getId());
+
         // click sur btnAjouter
-        addBtn.setOnClickListener(new View.OnClickListener() {
-            public void onClick(View v) {
-                ArdoiseDialogFragment ardoiseDialogFragment = new ArdoiseDialogFragment();
-
-                Bundle bundle = new Bundle();
-                bundle.putBoolean("notAlertDialog", true);
-
-                ardoiseDialogFragment.setArguments(bundle);
-
-                FragmentTransaction ft = getSupportFragmentManager().beginTransaction();
-                Fragment prev = getSupportFragmentManager().findFragmentByTag("dialog");
-                if (prev != null) {
-                    ft.remove(prev);
-                }
-                ft.addToBackStack(null);
-
-                ardoiseDialogFragment.setId(getId());
-                ardoiseDialogFragment.show(ft, "dialog");
-            }
-        });
+        addBtn.setOnClickListener(v -> ardoiseDialogFragment.show(ft, "dialog"));
 
         getDataDB();
     }
 
-    private void getDataDB() {
+    public void getDataDB() {
         db.collection("event")
                 .whereEqualTo("id", getId())
                 .get()
                 .addOnSuccessListener(queryDocumentSnapshots -> {
                     if (!queryDocumentSnapshots.isEmpty()) {
                         List<DocumentSnapshot> list = queryDocumentSnapshots.getDocuments();
+                        Log.d("TAG", "getDataDB: " + list.size());
                         for (DocumentSnapshot d : list) {
                             DataArdoiseList dList = d.toObject(DataArdoiseList.class);
-                            dataArdoiseList.add(dList);
+                            Log.d("TAG", "getDataDB: " + dList.toString());
+                            for(int j = 0; j < dList.getCount(); j++) {
+                                HashMap<String, String> value = new HashMap<>();
+                                value.put(dList.getKey(i), dList.getValue(i));
+
+                                DataArdoiseList tmp = new DataArdoiseList(value);
+
+                                i+=1;
+                                dataArdoiseList.add(tmp);
+                                this.totalPrix.setText(String.valueOf(dList.getTotalPrix()).concat("€"));
+                            }
                         }
-                        AdapterArdoiseList adapter = new AdapterArdoiseList(EventCalc.this, dataArdoiseList);
+                        AdapterArdoiseList adapter = new AdapterArdoiseList(EventCalc.this, dataArdoiseList, getId());
                         eList.setAdapter(adapter);
                     } else {
                         Toast.makeText(EventCalc.this, "Aucun évènement trouvé", Toast.LENGTH_SHORT).show();
                     }
-                }).addOnFailureListener(e -> {
-            Toast.makeText(EventCalc.this, "Erreur réseau", Toast.LENGTH_SHORT).show();
-        });
-
-//        db.collection("event")
-//                .whereEqualTo("id", getId())
-//                .get()
-//                .addOnCompleteListener(new OnCompleteListener<QuerySnapshot>() {
-//                    @Override
-//                    public void onComplete(@NonNull Task<QuerySnapshot> task) {
-//                        if (task.isSuccessful()) {
-//                            for (QueryDocumentSnapshot document : task.getResult()) {
-//                                HashMap dList = (HashMap) document.get("ardoise");
-//                                Log.d("TEsteeee", dList.toString());
-//                            }
-//                            AdapterArdoiseList adapter = new AdapterArdoiseList(EventCalc.this, dataArdoiseList);
-//                            eList.setAdapter(adapter);
-//                        } else {
-//                            Log.d("TAG", "Error getting documents: ", task.getException());
-//                        }
-//                    }
-//                });
+                }).addOnFailureListener(e -> Toast.makeText(EventCalc.this, "Erreur réseau", Toast.LENGTH_SHORT).show());
     }
 
     public void goHome(View view) {
@@ -171,9 +153,6 @@ public class EventCalc extends AppCompatActivity implements ArdoiseDialogFragmen
 
 
 
-
-
-
     public String getId() {
         return id;
     }
@@ -184,14 +163,6 @@ public class EventCalc extends AppCompatActivity implements ArdoiseDialogFragmen
 
     public TextView getTitlee() {
         return title;
-    }
-
-    public void setTitle(TextView title) {
-        this.title = title;
-    }
-
-    public Map getTmp() {
-        return tmp;
     }
 
     public void setTmp(Map tmp) {
@@ -206,33 +177,31 @@ public class EventCalc extends AppCompatActivity implements ArdoiseDialogFragmen
         this.context = context;
     }
 
-    public String getMsgLibelle() {
-        return msgLibelle;
-    }
-
-    public void setMsgLibelle(String msgLibelle) {
-        this.msgLibelle = msgLibelle;
-    }
-
-    public String getMsgPrix() {
-        return msgPrix;
-    }
-
-    public void setMsgPrix(String msgPrix) {
-        this.msgPrix = msgPrix;
+    public void setMailUser(String mailUser) {
+        this.mailUser = mailUser;
     }
 
     @Override
-    public void iAmMSG(String msg1, String msg2) {
-        setMsgLibelle(msg1);
-        setMsgPrix(msg2);
+    public void sendMessage(Boolean message) {
+        if(message) {
+            finish();
+            Intent intent = new Intent (this, EventCalc.class);
+            intent.putExtra("id", this.id);
+            startActivity(intent);
+        }
     }
 
-    public String getMailUser() {
-        return mailUser;
+    @Override
+    public void sendKey(Boolean message) {
+        if(message) {
+            finish();
+            Intent intent = new Intent (this, EventCalc.class);
+            intent.putExtra("id", this.id);
+            startActivity(intent);
+        }
     }
 
-    public void setMailUser(String mailUser) {
-        this.mailUser = mailUser;
+    @Override
+    public void onBackPressed() {
     }
 }

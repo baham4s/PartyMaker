@@ -1,8 +1,6 @@
 package com.example.partymaker;
 
-import android.app.Activity;
 import android.content.Context;
-import android.content.Intent;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -18,20 +16,20 @@ import com.google.firebase.firestore.FirebaseFirestore;
 
 import java.util.ArrayList;
 
-public class AdapterArdoiseList extends ArrayAdapter<DataArdoiseList>{
+public class AdapterInviteList extends ArrayAdapter<DataInviteList> {
     private int cpt;
     private String id;
-    private sendKey sendKey;
+    private sendKeyInvite sendKeyInvite;
     FirebaseFirestore db = FirebaseFirestore.getInstance();
 
-    public AdapterArdoiseList(@NonNull Context context, ArrayList<DataArdoiseList> dataModalArrayList, String id) {
+    public AdapterInviteList(@NonNull Context context, ArrayList<DataInviteList> dataModalArrayList, String id) {
         super(context, 0, dataModalArrayList);
         this.cpt = 0;
         this.id = id;
-        sendKey = (sendKey) context;
+        sendKeyInvite = (sendKeyInvite) context;
     }
 
-    public interface sendKey {
+    public interface sendKeyInvite {
         void sendKey(Boolean message);
     }
 
@@ -43,20 +41,20 @@ public class AdapterArdoiseList extends ArrayAdapter<DataArdoiseList>{
             listitemView = LayoutInflater.from(getContext()).inflate(R.layout.item_list, null);
         }
 
-        DataArdoiseList dataArdoiseList = getItem(position);
-        TextView nameE = listitemView.findViewById(R.id.nameEventTitle);
-        TextView depenseE = listitemView.findViewById(R.id.dateEventTitle);
+        DataInviteList dataInviteList = getItem(position);
+        TextView nameP = listitemView.findViewById(R.id.nameEventTitle);
+        TextView mailP = listitemView.findViewById(R.id.dateEventTitle);
 
-        nameE.setText(dataArdoiseList.getKey(this.cpt));
-        depenseE.setText(dataArdoiseList.getValue(this.cpt));
+        nameP.setText(dataInviteList.getKey(this.cpt));
+        mailP.setText(dataInviteList.getValue(this.cpt));
 
-        if(this.cpt < dataArdoiseList.getCount() - 1) {
+        if(this.cpt < dataInviteList.getCount() - 1) {
             this.cpt += 1;
         }
 
         listitemView.findViewById(R.id.imageButton).setOnClickListener(v -> {
-            db.collection("event").document(this.id).update("ardoise.".concat(dataArdoiseList.getKey(this.cpt)), FieldValue.delete());
-            sendKey.sendKey(true);
+            db.collection("event").document(this.id).update("invite.".concat(dataInviteList.getKey(this.cpt)), FieldValue.delete());
+            sendKeyInvite.sendKey(true);
         });
 
         return listitemView;
@@ -64,7 +62,7 @@ public class AdapterArdoiseList extends ArrayAdapter<DataArdoiseList>{
 
     @Override
     public String toString() {
-        return "AdapterArdoiseList{" +
+        return "AdapterInviteList{" +
                 "cpt=" + cpt +
                 '}';
     }

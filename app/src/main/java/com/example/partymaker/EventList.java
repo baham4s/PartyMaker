@@ -70,4 +70,20 @@ public class EventList extends AppCompatActivity {
     public void setMailUser(String mailUser) {
         this.mailUser = mailUser;
     }
+
+    public void deleteEvent(View view) {
+        int position = eList.getPositionForView((View) view.getParent());
+        DataEventList dataEventList = dataEventLists.get(position);
+        db.collection("event")
+                .document(dataEventList.getId())
+                .delete()
+                .addOnSuccessListener(aVoid -> {
+                    Toast.makeText(EventList.this, "Evènement supprimé", Toast.LENGTH_SHORT).show();
+                    dataEventLists.remove(position);
+                    AdapterEventList adapter = new AdapterEventList(EventList.this, dataEventLists);
+                    eList.setAdapter(adapter);
+                }).addOnFailureListener(e -> {
+                    Toast.makeText(EventList.this, "Erreur réseau", Toast.LENGTH_SHORT).show();
+                });
+    }
 }

@@ -28,18 +28,23 @@ public class AdapterEventList extends ArrayAdapter<DataEventList> {
         }
 
         DataEventList dataEventList = getItem(position);
+//        Log.d("AdapterEventList", "getView: " + dataEventList.toString());
 
         TextView nameE = listitemView.findViewById(R.id.nameEventTitle);
         TextView dateE = listitemView.findViewById(R.id.dateEventTitle);
 
         nameE.setText(dataEventList.getNameEvent());
+//        Log.d("nameEvent", dataEventList.getNameEvent());
         dateE.setText(dataEventList.getDate());
+//        Log.d("dateEvent", dataEventList.getDate());
 
         listitemView.setOnClickListener(v -> {
             Intent openE = new Intent(v.getContext(), EventHome.class);
             openE.putExtra("id", dataEventList.getId());
             v.getContext().startActivity(openE);
         });
+
+//        Log.d("AdapterEventList", "return");
         return listitemView;
     }
 }

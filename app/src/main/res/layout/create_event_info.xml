@@ -70,7 +70,7 @@
             android:layout_marginLeft="25dp"
             android:layout_marginRight="25dp"
             android:autofillHints="text"
-            android:hint="nom event"
+            android:hint="Nom de l'événement"
             android:inputType="text"
             android:minHeight="48dp"
             tools:ignore="HardcodedText" />
@@ -96,7 +96,7 @@
             android:layout_marginLeft="25dp"
             android:layout_marginRight="25dp"
             android:autofillHints="text"
-            android:hint="nom event"
+            android:hint="Adresse de l'événement"
             android:inputType="text"
             android:minHeight="48dp"
             tools:ignore="HardcodedText" />
@@ -122,7 +122,7 @@
             android:layout_marginLeft="25dp"
             android:layout_marginRight="25dp"
             android:autofillHints="text"
-            android:hint="description"
+            android:hint="Description de l'événement"
             android:inputType="text"
             android:minHeight="48dp"
             tools:ignore="HardcodedText" />
@@ -171,10 +171,10 @@
                 android:id="@+id/button_ConfirmSettings"
                 android:layout_width="160dp"
                 android:layout_height="wrap_content"
-                android:layout_toRightOf="@+id/button_CancelSettings"
                 android:layout_marginStart="20dp"
+                android:layout_toEndOf="@+id/button_CancelSettings"
+                android:onClick="goCreateTime"
                 android:text="Suivant"
-                android:onClick="goCreateEvent2"
                 tools:ignore="HardcodedText" />
 
 

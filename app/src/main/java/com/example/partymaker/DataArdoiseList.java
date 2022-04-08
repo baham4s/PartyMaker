@@ -1,7 +1,5 @@
 package com.example.partymaker;
 
-import android.util.Log;
-
 import java.util.Map;
 
 public class DataArdoiseList {
@@ -21,26 +19,21 @@ public class DataArdoiseList {
         return ardoise;
     }
 
-    public String getArdoiseName(int position){
-        int i = 0;
-        for (String key : ardoise.keySet()) {
-            if(i == position)
-                return key;
-            i++;
-        }
-        return null;
+    public String getKey(int i){
+        return ardoise.keySet().toArray()[i].toString();
     }
 
-    public String getArdoisePrix(int position){
-        int i = 0;
-        for (String key : ardoise.keySet()) {
-            if(i == position)
-                return ardoise.get(key);
-            i++;
-        }
-        return null;
+    public String getValue(int i){
+        return ardoise.get(getKey(i));
     }
 
+    public float getTotalPrix(){
+        float total = 0;
+        for (int i = 0; i < ardoise.size(); i++){
+            total += Float.parseFloat(getValue(i));
+        }
+        return total;
+    }
     @Override
     public String toString() {
         return "DataArdoiseList{" +

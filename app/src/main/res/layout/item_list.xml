@@ -8,7 +8,7 @@
 
     <TextView
         android:id="@+id/nameEventTitle"
-        android:layout_width="300dp"
+        android:layout_width="222dp"
         android:layout_height="wrap_content"
         android:fontFamily="sans-serif-medium"
         android:hint="nameEvent"
@@ -17,21 +17,26 @@
 
     <TextView
         android:id="@+id/dateEventTitle"
-        android:layout_width="300dp"
+        android:layout_width="222dp"
         android:layout_height="wrap_content"
-        android:fontFamily="sans-serif"
-        android:layout_marginTop="7dp"
         android:layout_below="@+id/nameEventTitle"
+        android:layout_marginTop="7dp"
+        android:fontFamily="sans-serif"
+        android:hint="date"
         android:textAppearance="?android:textAppearance"
-        android:textColor="@color/black"
-        android:hint="date"/>
+        android:textColor="@color/black" />
 
     <ImageButton
-        android:layout_width="50dp"
-        android:layout_height="50dp"
-        android:layout_toRightOf="@+id/nameEventTitle"
+        android:id="@+id/imageButton"
+        style="@style/Widget.AppCompat.ImageButton"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentTop="true"
+        android:layout_marginStart="26dp"
+        android:layout_marginTop="12dp"
+        android:layout_toEndOf="@+id/nameEventTitle"
+        android:background="@color/white"
+        android:contentDescription="@string/yes"
         android:src="@android:drawable/ic_delete"
-        android:contentDescription="yes"
-        android:background="@color/white"/>
-
+        android:onClick="deleteEvent"/>
 </RelativeLayout>

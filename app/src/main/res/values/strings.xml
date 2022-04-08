@@ -31,4 +31,6 @@
     <string name="total">Total =</string>
     <string name="_0_euros">0 euros</string>
     <string name="ajouter">Ajouter</string>
+    <string name="yes">yes</string>
+    <string name="theme_sombre">Thème Sombre</string>
 </resources>
