@@ -55,7 +55,7 @@ public class CreateEventTime extends AppCompatActivity {
         this.dateButton.setHint(getTodaysDate());
         initDatePicker();
 
-        // Set the variables to the corresponding views
+        // Set the variables to the corresponding layout
         this.textViewTime = this.findViewById(R.id.textView_time);
         this.timePicker = this.findViewById(R.id.timePicker);
         this.timePicker.setIs24HourView(true);
@@ -193,7 +193,6 @@ public class CreateEventTime extends AppCompatActivity {
             default:
                 return "JAN";
         }
-
     }
 
     // Display the date picker

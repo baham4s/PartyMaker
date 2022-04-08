@@ -18,43 +18,47 @@ import com.google.firebase.firestore.DocumentReference;
 import com.google.firebase.firestore.DocumentSnapshot;
 import com.google.firebase.firestore.FirebaseFirestore;
 
+import java.text.MessageFormat;
 import java.util.Map;
 
+// Class: EventSettings
+// Description: This class is set up to allow the user to change the settings of an event.
 public class EventSettings extends AppCompatActivity{
-
+    // Initialize variables
     private TextView title;
     private EditText nameEvent;
-
     private DatePickerDialog datePickerDialog;
     private Button dateButton;
-
     private TimePicker timePicker;
-
     private Map tmp;
     private String date;
-
     private String id;
-
-    FirebaseFirestore db;
-
     private int tmpHour;
     private int tmpMin;
+    private TextView textViewTime;
 
+    // Initialize Firebase variables
+    FirebaseFirestore db = FirebaseFirestore.getInstance();
+
+    // Create the activity
     @Override
     protected void onCreate(Bundle savedInstanceState){
         super.onCreate(savedInstanceState);
         setContentView(R.layout.event_settings);
 
+        // Get the intent id from the previous activity
         Intent intentBase = getIntent();
         this.id = intentBase.getStringExtra("id");
 
-        db = FirebaseFirestore.getInstance();
-
+        // Set the variables corresponding to the layout
         this.nameEvent = findViewById(R.id.editNameEvent);
         this.title = findViewById(R.id.textSettings);
         this.dateButton = findViewById(R.id.datePickerButton);
         this.timePicker = this.findViewById(R.id.timePicker);
+        this.timePicker.setIs24HourView(true);
+        this.textViewTime = this.findViewById(R.id.textView_time);
 
+        // Get the event data from the database and set the hints for the TextViews
         DocumentReference docRef = db.collection("event").document(getId());
         docRef.get().addOnCompleteListener(task -> {
             if (task.isSuccessful()) {
@@ -72,19 +76,28 @@ public class EventSettings extends AppCompatActivity{
             }
         });
 
+        // Init the date picker
         initDatePicker();
 
+        // Set the onClickListener for the date button
         this.datePickerDialog.setOnDateSetListener((datePicker, i, i1, i2) -> {
             date = makeDateSring(i2, i1, i);
             getDateButton().setHint(date);
         });
+
+        // Set the onClickListener for the time button
         this.timePicker.setOnTimeChangedListener((view, hourOfDay, minute) -> {
             getTimePicker().setHour(hourOfDay);
             getTimePicker().setMinute(minute);
+            if(minute < 10){
+                textViewTime.setText(MessageFormat.format("{0} : 0{1}", hourOfDay, minute));
+            }else{
+                textViewTime.setText(MessageFormat.format("{0} : {1}", hourOfDay, minute));
+            }
         });
-
     }
 
+    // Initialize the date picker
     private void initDatePicker(){
         DatePickerDialog.OnDateSetListener dateSetListener = (datePicker, year, month, day) -> {
             month = month + 1;
@@ -102,6 +115,7 @@ public class EventSettings extends AppCompatActivity{
         datePickerDialog = new DatePickerDialog(this, style, dateSetListener, year, month, day);
     }
 
+    // Make a date string
     private String makeDateSring(int day, int month, int year) {
         if(day < 10){
             return  "0" + day + " " + getMonthFormat(month) + " " + year;
@@ -110,6 +124,7 @@ public class EventSettings extends AppCompatActivity{
         }
     }
 
+    // Transform the month number to a string
     private String getMonthFormat(int month) {
         switch(month + 1){
             case 1:
@@ -139,35 +154,46 @@ public class EventSettings extends AppCompatActivity{
             default:
                 return "JAN";
         }
-
     }
 
+    // Display the date picker
     public void openDatePicker(View view){
         datePickerDialog.show();
     }
 
+    // Go to event home page and send the id of the event to the event home page
     public void goHome(View view) {
         Intent intent = new Intent (this, EventHome.class);
         intent.putExtra("id", this.id);
         startActivity(intent);
     }
 
+    // Go to event calc page and send the id of the event to the event calc page
     public void goCalc(View view) {
         Intent intent = new Intent (this, EventCalc.class);
         intent.putExtra("id", this.id);
         startActivity(intent);
     }
 
+    // Go to event invite page and send the id of the event to the event invite page
     public void goInvite(View view) {
         Intent intent = new Intent (this, EventInvite.class);
         intent.putExtra("id", this.id);
         startActivity(intent);
     }
 
+    // Go back to the list of events page
+    public void onBtnBackHome(View view) {
+        Intent intent = new Intent (this, EventList.class);
+        startActivity(intent);
+    }
+
+    // Update the settings of the event
     public void onBtnConfirmClick(View view){
         Intent intent = new Intent (this, EventHome.class);
 
         DocumentReference tmp = db.collection("event").document(getId());
+        // Update the name of the event if he is not empty
         if(!getNameEvent().getText().toString().equals("")) {
             tmp
                     .update("nameEvent", getNameEvent().getText().toString())
@@ -177,6 +203,7 @@ public class EventSettings extends AppCompatActivity{
                     })
                     .addOnFailureListener(e -> Toast.makeText(EventSettings.this, "Pas mise a jour", Toast.LENGTH_SHORT).show());
         }
+        // Update the date of the event if he is not empty
         if(date != null){
             tmp
                     .update("date", date)
@@ -186,6 +213,7 @@ public class EventSettings extends AppCompatActivity{
                     })
                     .addOnFailureListener(e -> Toast.makeText(EventSettings.this, "Pas mise a jour", Toast.LENGTH_SHORT).show());
         }
+        // Update the hour of the event if he is not empty
         if(getTmpHour() != getTimePicker().getHour()) {
             tmp
                     .update("heure", getTimePicker().getHour())
@@ -195,6 +223,7 @@ public class EventSettings extends AppCompatActivity{
                     })
                     .addOnFailureListener(e -> Toast.makeText(EventSettings.this, "Pas mise a jour", Toast.LENGTH_SHORT).show());
         }
+        // Update the minute of the event if he is not empty
         if(getTmpMin() != getTimePicker().getMinute()) {
             tmp
                     .update("minute", getTimePicker().getMinute())
@@ -206,11 +235,8 @@ public class EventSettings extends AppCompatActivity{
         }
     }
 
-    public void onBtnBackHome(View view) {
-        Intent intent = new Intent (this, EventList.class);
-        startActivity(intent);
-    }
 
+    // Getter and setter
     public void setTmp(Map tmp) {
         this.tmp = tmp;
     }
